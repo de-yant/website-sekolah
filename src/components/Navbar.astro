@@ -1,0 +1,85 @@
+---
+import { Menu, X } from "@lucide/astro";
+import Sidebar from "./Sidebar.astro";
+import { sekolah } from "../data/sekolah";
+---
+
+<header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur border-b border-slate-800">
+
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+
+    <!-- LOGO -->
+    <a href="/" class="flex items-center gap-3 text-white font-bold">
+      <img src={sekolah.logo} class="w-8 h-8" />
+      {sekolah.nama}
+    </a>
+
+    <!-- DESKTOP MENU -->
+    <nav class="hidden md:flex gap-6 text-slate-300 text-sm">
+      <a href="/">Beranda</a>
+      <a href="/profil">Profil</a>
+      <a href="/visi-misi">Visi Misi</a>
+      <a href="/jurusan">Jurusan</a>
+      <a href="/guru">Guru</a>
+      <a href="/kontak">Kontak</a>
+    </nav>
+
+    <!-- HAMBURGER -->
+    <button id="openSidebar" class="md:hidden text-white">
+      <Menu />
+    </button>
+
+  </div>
+
+</header>
+
+<!-- SIDEBAR MOBILE -->
+<div id="sidebar" class="fixed inset-0 z-50 hidden md:hidden">
+
+  <!-- OVERLAY -->
+  <div id="overlay" class="absolute inset-0 bg-black/50"></div>
+
+  <!-- PANEL -->
+  <div class="absolute right-0 top-0 h-full w-72 bg-slate-900 p-4 flex flex-col">
+
+    <!-- HEADER SIDEBAR -->
+    <div class="flex items-center justify-between mb-4">
+      <span class="text-white font-bold">Menu</span>
+
+      <button id="closeSidebar" class="text-white">
+        <X />
+      </button>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="flex-1 overflow-y-auto">
+      <Sidebar />
+    </div>
+
+  </div>
+</div>
+
+<script is:inline>
+  const sidebar = document.getElementById("sidebar");
+  const openBtn = document.getElementById("openSidebar");
+  const closeBtn = document.getElementById("closeSidebar");
+  const overlay = document.getElementById("overlay");
+
+  const openSidebar = () => {
+    if (!sidebar) return;
+    sidebar.classList.remove("hidden");
+  };
+
+  const closeSidebar = () => {
+    if (!sidebar) return;
+    sidebar.classList.add("hidden");
+  };
+
+  openBtn?.addEventListener("click", openSidebar);
+  closeBtn?.addEventListener("click", closeSidebar);
+  overlay?.addEventListener("click", closeSidebar);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeSidebar();
+  });
+</script>

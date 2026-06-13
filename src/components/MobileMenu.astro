@@ -1,0 +1,37 @@
+---
+const menus = [
+  { name: "Beranda", href: "/" },
+  { name: "Profil", href: "/profil" },
+  { name: "Visi Misi", href: "/visi-misi" },
+  { name: "Jurusan", href: "/jurusan" },
+  { name: "Guru", href: "/guru" },
+  { name: "Kontak", href: "/kontak" },
+  { name: "Berita", href: "/berita" },
+  { name: "Pengumuman", href: "/pengumuman" },
+  { name: "Galeri", href: "/galeri" },
+  { name: "Prestasi", href: "/prestasi" },
+];
+---
+
+<div class="md:hidden px-6 py-4">
+
+  <div class="bg-slate-900/40 border border-slate-800 rounded-xl p-4">
+
+    <h2 class="text-xs font-bold text-sky-400 mb-3 uppercase">
+      Navigasi
+    </h2>
+
+    <div class="grid grid-cols-2 gap-2">
+      {menus.map((m) => (
+        <a
+          href={m.href}
+          class="p-3 text-center text-xs bg-slate-800 border border-slate-700 rounded-lg text-slate-300 hover:text-sky-400"
+        >
+          {m.name}
+        </a>
+      ))}
+    </div>
+
+  </div>
+
+</div>
