@@ -1,0 +1,355 @@
+---
+// src/pages/berita/index.astro
+import Layout from "../../../layouts/Layout.astro";
+
+const beritaList = [
+  {
+    slug: "contoh-berita-1",
+    judul: "Siswa SMK 2 LPPM RI Raih Juara 1 Lomba Nasional",
+    ringkasan: "Keberhasilan siswa jurusan Broadcasting dalam ajang kompetisi tingkat nasional yang diselenggarakan di Jakarta.",
+    tanggal: "12 Juni 2025",
+    kategori: "Prestasi",
+    penulis: "Admin",
+    thumbnail: null,
+  },
+  {
+    slug: "contoh-berita-2",
+    judul: "Kegiatan Praktik Kerja Lapangan Tahun 2025 Resmi Dibuka",
+    ringkasan: "Sebanyak 300 siswa kelas XI mengikuti pembekalan PKL yang akan dilaksanakan di berbagai perusahaan mitra sekolah.",
+    tanggal: "5 Juni 2025",
+    kategori: "Kegiatan",
+    penulis: "Humas",
+    thumbnail: null,
+  },
+  {
+    slug: "contoh-berita-3",
+    judul: "SMK 2 LPPM RI Jalin Kerjasama dengan Industri Otomotif",
+    ringkasan: "Penandatanganan MoU antara SMK 2 LPPM RI Majalaya dengan salah satu perusahaan otomotif terkemuka di Jawa Barat.",
+    tanggal: "28 Mei 2025",
+    kategori: "Kerjasama",
+    penulis: "Humas",
+    thumbnail: null,
+  },
+  {
+    slug: "contoh-berita-4",
+    judul: "Penerimaan Peserta Didik Baru Tahun Ajaran 2025/2026",
+    ringkasan: "SMK 2 LPPM RI Majalaya membuka pendaftaran PPDB untuk tahun ajaran baru. Kuota terbatas, segera daftarkan diri Anda.",
+    tanggal: "20 Mei 2025",
+    kategori: "PPDB",
+    penulis: "Admin",
+    thumbnail: null,
+  },
+  {
+    slug: "contoh-berita-5",
+    judul: "Pelatihan Digital Marketing untuk Siswa Jurusan DKV",
+    ringkasan: "Workshop intensif selama dua hari bersama praktisi digital marketing profesional untuk meningkatkan kompetensi siswa.",
+    tanggal: "15 Mei 2025",
+    kategori: "Kegiatan",
+    penulis: "Admin",
+    thumbnail: null,
+  },
+  {
+    slug: "contoh-berita-6",
+    judul: "Upacara Peringatan Hari Pendidikan Nasional 2025",
+    ringkasan: "Seluruh civitas akademika SMK 2 LPPM RI Majalaya mengikuti upacara bendera dalam rangka memperingati Hardiknas 2025.",
+    tanggal: "2 Mei 2025",
+    kategori: "Kegiatan",
+    penulis: "Humas",
+    thumbnail: null,
+  },
+];
+
+const kategoriList = ["Semua", "Prestasi", "Kegiatan", "Kerjasama", "PPDB"];
+
+const kategoriWarna: Record<string, string> = {
+  Prestasi:  "kat-prestasi",
+  Kegiatan:  "kat-kegiatan",
+  Kerjasama: "kat-kerjasama",
+  PPDB:      "kat-ppdb",
+};
+---
+
+<Layout title="Berita">
+
+  <!-- HERO -->
+  <section class="berita-hero">
+    <div class="hero-badge">Informasi Terkini</div>
+    <h1 class="hero-title">Berita</h1>
+    <p class="hero-sub">Ikuti perkembangan terbaru dari SMK 2 LPPM RI Majalaya</p>
+  </section>
+
+  <!-- FILTER KATEGORI -->
+  <div class="filter-wrap">
+    {kategoriList.map((k) => (
+      <button class={`filter-btn ${k === "Semua" ? "filter-active" : ""}`} data-kat={k}>
+        {k}
+      </button>
+    ))}
+  </div>
+
+  <!-- BERITA UTAMA (featured) -->
+  <section class="featured-section">
+    <a href={`/berita/${beritaList[0].slug}`} class="featured-card">
+      <div class="featured-thumb">
+        <div class="thumb-placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+        </div>
+        <span class={`kat-badge ${kategoriWarna[beritaList[0].kategori]}`}>
+          {beritaList[0].kategori}
+        </span>
+      </div>
+      <div class="featured-info">
+        <div class="featured-meta">
+          <span class="meta-tanggal">📅 {beritaList[0].tanggal}</span>
+          <span class="meta-penulis">✍️ {beritaList[0].penulis}</span>
+        </div>
+        <h2 class="featured-judul">{beritaList[0].judul}</h2>
+        <p class="featured-ringkasan">{beritaList[0].ringkasan}</p>
+        <span class="baca-link">Baca Selengkapnya →</span>
+      </div>
+    </a>
+  </section>
+
+  <!-- GRID BERITA -->
+  <section class="grid-section">
+    <div class="berita-grid">
+      {beritaList.slice(1).map((b) => (
+        <a href={`/berita/${b.slug}`} class="berita-card" data-kategori={b.kategori}>
+          <div class="card-thumb">
+            <div class="thumb-placeholder small">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21 15 16 10 5 21"/>
+              </svg>
+            </div>
+            <span class={`kat-badge ${kategoriWarna[b.kategori]}`}>{b.kategori}</span>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="meta-tanggal">📅 {b.tanggal}</span>
+              <span class="meta-penulis">✍️ {b.penulis}</span>
+            </div>
+            <h3 class="card-judul">{b.judul}</h3>
+            <p class="card-ringkasan">{b.ringkasan}</p>
+            <span class="baca-link">Baca →</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* HERO */
+  .berita-hero {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    border-bottom: 1px solid var(--border-glass);
+    margin-bottom: 2rem;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .hero-title {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+  .hero-sub { font-size: 0.95rem; color: var(--text-muted); }
+
+  /* FILTER */
+  .filter-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .filter-btn {
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.35rem 1rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-glass);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  /* FEATURED */
+  .featured-section { margin-bottom: 2rem; }
+  .featured-card {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 1.25rem;
+    overflow: hidden;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .featured-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  @media (max-width: 768px) {
+    .featured-card { grid-template-columns: 1fr; }
+  }
+
+  .featured-thumb {
+    position: relative;
+    background: var(--bg-surface);
+    min-height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .featured-info {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  .featured-meta { display: flex; gap: 1rem; }
+  .featured-judul {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin: 0;
+  }
+  .featured-ringkasan {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  /* GRID */
+  .berita-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .berita-card {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 1rem;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .berita-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+
+  .card-thumb {
+    position: relative;
+    background: var(--bg-surface);
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+  }
+  .card-judul {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin: 0;
+  }
+  .card-ringkasan {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+    flex: 1;
+  }
+
+  /* SHARED */
+  .thumb-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    width: 100%;
+    height: 100%;
+  }
+  .card-meta, .featured-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .meta-tanggal, .meta-penulis {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+  .baca-link {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-top: auto;
+  }
+
+  /* KATEGORI BADGE */
+  .kat-badge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .kat-prestasi  { background: rgba(16,185,129,0.15);  color: #10b981; }
+  .kat-kegiatan  { background: rgba(14,165,233,0.15);  color: var(--accent); }
+  .kat-kerjasama { background: rgba(139,92,246,0.15);  color: #8b5cf6; }
+  .kat-ppdb      { background: rgba(245,158,11,0.15);  color: #f59e0b; }
+</style>
+
+<script is:inline>
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const cards = document.querySelectorAll(".berita-card");
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filterBtns.forEach((b) => b.classList.remove("filter-active"));
+      btn.classList.add("filter-active");
+
+      const kat = btn.dataset.kat;
+      cards.forEach((card) => {
+        if (kat === "Semua" || card.dataset.kategori === kat) {
+          card.style.display = "flex";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+</script>

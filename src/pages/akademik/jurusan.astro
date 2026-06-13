@@ -1,0 +1,374 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const jurusan = [
+  {
+    kode: "BPF",
+    nama: "Broadcasting & Perfilman",
+    singkat: "Broadcasting",
+    icon: "🎬",
+    warna: "hijau",
+    deskripsi:
+      "Kompetensi keahlian yang mempersiapkan siswa dalam bidang penyiaran, produksi video, fotografi, dan perfilman profesional.",
+    mapel: [
+      "Dasar-dasar Broadcasting",
+      "Teknik Produksi Video",
+      "Fotografi & Videografi",
+      "Penyiaran Radio & TV",
+      "Editing Video",
+      "Produksi Film Pendek",
+      "Manajemen Produksi",
+    ],
+    prospek: [
+      "Kameramen / Videografer",
+      "Editor Video",
+      "Penyiar Radio / TV",
+      "Produser Konten",
+      "Fotografer Profesional",
+      "Content Creator",
+    ],
+    fasilitas: ["Studio Foto & Video", "Ruang Editing", "Peralatan Kamera", "Studio Siaran"],
+  },
+  {
+    kode: "DKV",
+    nama: "Desain Komunikasi Visual",
+    singkat: "DKV",
+    icon: "🎨",
+    warna: "kuning",
+    deskripsi:
+      "Kompetensi keahlian yang membekali siswa dengan kemampuan desain grafis, ilustrasi, animasi, dan komunikasi visual digital.",
+    mapel: [
+      "Dasar-dasar DKV",
+      "Desain Grafis",
+      "Ilustrasi Digital",
+      "Fotografi Dasar",
+      "Animasi 2D",
+      "Desain Web",
+      "Branding & Identitas Visual",
+    ],
+    prospek: [
+      "Desainer Grafis",
+      "Illustrator Digital",
+      "Motion Graphic Designer",
+      "UI/UX Designer",
+      "Art Director",
+      "Animator",
+    ],
+    fasilitas: ["Lab Komputer Desain", "Studio Gambar", "Printer Lebar", "Tablet Grafis"],
+  },
+  {
+    kode: "TPM",
+    nama: "Teknik Pemesinan",
+    singkat: "Pemesinan",
+    icon: "⚙️",
+    warna: "biru",
+    deskripsi:
+      "Kompetensi keahlian yang mempersiapkan siswa menguasai teknik pengoperasian mesin produksi, CNC, dan manufaktur industri.",
+    mapel: [
+      "Dasar-dasar Teknik Mesin",
+      "Gambar Teknik",
+      "Teknik Pemesinan Bubut",
+      "Teknik Pemesinan Frais",
+      "CNC Turning & Milling",
+      "Pengukuran & Kalibrasi",
+      "K3 Industri",
+    ],
+    prospek: [
+      "Operator Mesin CNC",
+      "Teknisi Manufaktur",
+      "Quality Control",
+      "Drafter Teknik",
+      "Operator Produksi",
+      "Maintenance Mesin",
+    ],
+    fasilitas: ["Workshop Mesin", "Mesin CNC", "Mesin Bubut & Frais", "Lab CAD/CAM"],
+  },
+  {
+    kode: "TKR",
+    nama: "Teknik Otomotif",
+    singkat: "Otomotif",
+    icon: "🚗",
+    warna: "merah",
+    deskripsi:
+      "Kompetensi keahlian yang membekali siswa dengan kemampuan perawatan, perbaikan, dan diagnosa kendaraan bermotor roda dua dan empat.",
+    mapel: [
+      "Dasar-dasar Otomotif",
+      "Engine Tune-Up",
+      "Sistem Kelistrikan Kendaraan",
+      "Sistem Rem & Kemudi",
+      "Transmisi Otomatis",
+      "Diagnosa Kendaraan",
+      "K3 Bengkel",
+    ],
+    prospek: [
+      "Mekanik Kendaraan",
+      "Teknisi Otomotif",
+      "Service Advisor",
+      "Wirausaha Bengkel",
+      "Teknisi Kelistrikan",
+      "Quality Inspector",
+    ],
+    fasilitas: ["Bengkel Otomotif", "Alat Diagnosa", "Unit Kendaraan Praktik", "Lift Kendaraan"],
+  },
+];
+---
+
+<Layout title="Jurusan">
+
+  <!-- HERO -->
+  <section class="jurusan-hero">
+    <div class="hero-badge">Program Keahlian</div>
+    <h1 class="hero-title">Kompetensi Keahlian</h1>
+    <p class="hero-sub">SMK 2 LPPM RI Majalaya membuka 4 program keahlian unggulan</p>
+    <div class="hero-chips">
+      {jurusan.map((j) => (
+        <a href={`#${j.kode}`} class={`chip chip-${j.warna}`}>
+          {j.icon} {j.singkat}
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- JURUSAN CARDS -->
+  {jurusan.map((j, i) => (
+    <section id={j.kode} class={`jurusan-section ${i === jurusan.length - 1 ? "last" : ""}`}>
+      <div class={`jurusan-header jurusan-header-${j.warna}`}>
+        <span class="jurusan-icon">{j.icon}</span>
+        <div>
+          <span class={`jurusan-kode kode-${j.warna}`}>{j.kode}</span>
+          <h2 class="jurusan-nama">{j.nama}</h2>
+          <p class="jurusan-desc">{j.deskripsi}</p>
+        </div>
+      </div>
+
+      <div class="jurusan-body">
+
+        <!-- MAPEL -->
+        <div class="detail-card">
+          <h3 class="detail-title">📘 Mata Pelajaran Kejuruan</h3>
+          <ul class="mapel-list">
+            {j.mapel.map((m) => (
+              <li class="mapel-item">
+                <span class={`mapel-dot dot-${j.warna}`}></span>
+                {m}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- PROSPEK -->
+        <div class="detail-card">
+          <h3 class="detail-title">💼 Prospek Karir</h3>
+          <div class="prospek-grid">
+            {j.prospek.map((p) => (
+              <div class={`prospek-item prospek-${j.warna}`}>{p}</div>
+            ))}
+          </div>
+        </div>
+
+        <!-- FASILITAS -->
+        <div class="detail-card detail-card-full">
+          <h3 class="detail-title">🏫 Fasilitas Pendukung</h3>
+          <div class="fasilitas-list">
+            {j.fasilitas.map((f) => (
+              <div class={`fasilitas-item fasilitas-${j.warna}`}>
+                <span class="fas-icon">✓</span>
+                {f}
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+  ))}
+
+</Layout>
+
+<style>
+  /* HERO */
+  .jurusan-hero {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    border-bottom: 1px solid var(--border-glass);
+    margin-bottom: 3rem;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .hero-title {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+  .hero-sub {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+  .hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .chip {
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.35rem 1rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .chip:hover { transform: translateY(-2px); opacity: 0.85; }
+
+  /* SECTION */
+  .jurusan-section {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border-glass);
+    scroll-margin-top: 5rem;
+  }
+  .jurusan-section.last { border-bottom: none; padding-bottom: 1rem; }
+
+  /* HEADER */
+  .jurusan-header {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid transparent;
+  }
+  .jurusan-icon { font-size: 2.5rem; flex-shrink: 0; }
+  .jurusan-kode {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    margin-bottom: 0.4rem;
+  }
+  .jurusan-nama {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem;
+  }
+  .jurusan-desc {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  /* BODY GRID */
+  .jurusan-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (max-width: 640px) {
+    .jurusan-body { grid-template-columns: 1fr; }
+  }
+  .detail-card {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 0.875rem;
+    padding: 1.25rem;
+  }
+  .detail-card-full { grid-column: 1 / -1; }
+  .detail-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 1rem;
+  }
+
+  /* MAPEL */
+  .mapel-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .mapel-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.83rem;
+    color: var(--text-secondary);
+  }
+  .mapel-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* PROSPEK */
+  .prospek-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .prospek-item {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+  }
+
+  /* FASILITAS */
+  .fasilitas-list { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .fasilitas-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    border-radius: 0.625rem;
+    border: 1px solid transparent;
+  }
+  .fas-icon { font-weight: 900; }
+
+  /* ── WARNA ── */
+  /* HIJAU (Broadcasting) */
+  .chip-hijau       { background: rgba(16,185,129,0.12); color: #10b981; border-color: rgba(16,185,129,0.25); }
+  .jurusan-header-hijau { background: rgba(16,185,129,0.06); border-color: rgba(16,185,129,0.15); }
+  .kode-hijau       { background: rgba(16,185,129,0.15); color: #10b981; }
+  .dot-hijau        { background: #10b981; }
+  .prospek-hijau    { background: rgba(16,185,129,0.1);  color: #10b981; border-color: rgba(16,185,129,0.2); }
+  .fasilitas-hijau  { background: rgba(16,185,129,0.08); color: #10b981; border-color: rgba(16,185,129,0.15); }
+
+  /* KUNING (DKV) */
+  .chip-kuning       { background: rgba(245,158,11,0.12); color: #f59e0b; border-color: rgba(245,158,11,0.25); }
+  .jurusan-header-kuning { background: rgba(245,158,11,0.06); border-color: rgba(245,158,11,0.15); }
+  .kode-kuning       { background: rgba(245,158,11,0.15); color: #f59e0b; }
+  .dot-kuning        { background: #f59e0b; }
+  .prospek-kuning    { background: rgba(245,158,11,0.1);  color: #f59e0b; border-color: rgba(245,158,11,0.2); }
+  .fasilitas-kuning  { background: rgba(245,158,11,0.08); color: #f59e0b; border-color: rgba(245,158,11,0.15); }
+
+  /* BIRU (Pemesinan) */
+  .chip-biru        { background: rgba(14,165,233,0.12); color: var(--accent); border-color: rgba(14,165,233,0.25); }
+  .jurusan-header-biru { background: rgba(14,165,233,0.06); border-color: rgba(14,165,233,0.15); }
+  .kode-biru        { background: rgba(14,165,233,0.15); color: var(--accent); }
+  .dot-biru         { background: var(--accent); }
+  .prospek-biru     { background: rgba(14,165,233,0.1);  color: var(--accent); border-color: rgba(14,165,233,0.2); }
+  .fasilitas-biru   { background: rgba(14,165,233,0.08); color: var(--accent); border-color: rgba(14,165,233,0.15); }
+
+  /* MERAH (Otomotif) */
+  .chip-merah       { background: rgba(239,68,68,0.12);  color: #ef4444; border-color: rgba(239,68,68,0.25); }
+  .jurusan-header-merah { background: rgba(239,68,68,0.06); border-color: rgba(239,68,68,0.15); }
+  .kode-merah       { background: rgba(239,68,68,0.15); color: #ef4444; }
+  .dot-merah        { background: #ef4444; }
+  .prospek-merah    { background: rgba(239,68,68,0.1);  color: #ef4444; border-color: rgba(239,68,68,0.2); }
+  .fasilitas-merah  { background: rgba(239,68,68,0.08); color: #ef4444; border-color: rgba(239,68,68,0.15); }
+</style>

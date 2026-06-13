@@ -1,0 +1,343 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { sekolah } from "../../../data/sekolah";
+---
+
+<Layout title="Kontak">
+
+  <!-- HERO -->
+  <section class="kontak-hero">
+    <div class="hero-badge">Hubungi Kami</div>
+    <h1 class="hero-title">Kontak & Lokasi</h1>
+    <p class="hero-sub">Kami siap membantu pertanyaan dan keperluan Anda</p>
+  </section>
+
+  <!-- GRID UTAMA -->
+  <section class="kontak-section">
+    <div class="kontak-grid">
+
+      <!-- INFO KONTAK -->
+      <div class="info-col">
+
+        <div class="info-card">
+          <div class="info-icon">📞</div>
+          <div>
+            <p class="info-label">Telepon</p>
+            <a href={`tel:${sekolah.telepon}`} class="info-value">{sekolah.telepon}</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">💬</div>
+          <div>
+            <p class="info-label">WhatsApp</p>
+            <a href={`https://wa.me/${sekolah.Hp?.replace(/\s+/g, "")}`} target="_blank" rel="noopener noreferrer" class="info-value info-wa">{sekolah.Hp}</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">✉️</div>
+          <div>
+            <p class="info-label">Email</p>
+            <a href={`mailto:${sekolah.email}`} class="info-value">{sekolah.email}</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">📍</div>
+          <div>
+            <p class="info-label">Alamat</p>
+            <p class="info-value">{sekolah.alamat}</p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">🕐</div>
+          <div>
+            <p class="info-label">Jam Operasional</p>
+            <p class="info-value">Senin – Jumat: 07.00 – 16.00 WIB</p>
+            <p class="info-value-muted">Sabtu: 07.00 – 12.00 WIB</p>
+          </div>
+        </div>
+
+        <!-- SOSMED -->
+        <div class="sosmed-wrap">
+          <p class="info-label mb-2">Media Sosial</p>
+          <div class="sosmed-list">
+            <a href={sekolah.sosialMedia.instagram || "#"} target="_blank" rel="noopener noreferrer" class="sosmed-btn sosmed-ig">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 4a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-5 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+              </svg>
+              Instagram
+            </a>
+            <a href={sekolah.sosialMedia.youtube || "#"} target="_blank" rel="noopener noreferrer" class="sosmed-btn sosmed-yt">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21.8 8s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16.8 5 12 5 12 5s-4.8 0-7 .1c-.4.1-1.2.1-2 .9-.6.6-.8 2-.8 2S2 9.6 2 11.2v1.5c0 1.6.2 3.2.2 3.2s.2 1.4.8 2c.8.8 1.8.8 2.3.9C6.8 19 12 19 12 19s4.8 0 7-.1c.4-.1 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.5C22 9.6 21.8 8 21.8 8zM10 15V9l5.5 3-5.5 3z"/>
+              </svg>
+              YouTube
+            </a>
+            <a href={sekolah.sosialMedia.facebook || "#"} target="_blank" rel="noopener noreferrer" class="sosmed-btn sosmed-fb">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22 12a10 10 0 1 0-11.5 9.95v-7.05H8v-2.9h2.5V9.3c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6v1.9H17l-.4 2.9h-2.3v7.05A10 10 0 0 0 22 12z"/>
+              </svg>
+              Facebook
+            </a>
+            <a href={sekolah.sosialMedia.tiktok || "#"} target="_blank" rel="noopener noreferrer" class="sosmed-btn sosmed-tt">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16 2c.6 2.4 2.2 4 4.6 4v3c-1.6 0-3-.5-4.6-1.5V15c0 3.3-2.7 6-6 6S4 18.3 4 15s2.7-6 6-6c.4 0 .8 0 1.2.1v3.2c-.4-.2-.8-.3-1.2-.3-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3V2h3z"/>
+              </svg>
+              TikTok
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FORM & MAP -->
+      <div class="form-col">
+
+        <!-- FORM -->
+        <div class="form-card">
+          <h3 class="form-title">Kirim Pesan</h3>
+          <div class="form-group">
+            <label class="form-label">Nama Lengkap</label>
+            <input type="text" class="form-input" placeholder="Nama Anda" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" placeholder="email@contoh.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">No. WhatsApp</label>
+            <input type="tel" class="form-input" placeholder="08xxxxxxxxxx" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Keperluan</label>
+            <select class="form-input">
+              <option value="">-- Pilih Keperluan --</option>
+              <option>Informasi PPDB</option>
+              <option>Informasi Jurusan</option>
+              <option>Kerjasama / Industri</option>
+              <option>Pengaduan</option>
+              <option>Lainnya</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pesan</label>
+            <textarea class="form-input form-textarea" placeholder="Tulis pesan Anda di sini..."></textarea>
+          </div>
+          <button class="form-btn">
+            Kirim Pesan
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- MAP -->
+        <div class="map-card">
+          <h3 class="form-title">Lokasi Kami</h3>
+          <div class="map-wrap">
+            <iframe
+              src={sekolah.lokasi.embedUrl}
+              class="map-iframe"
+              loading="lazy"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <a href={sekolah.lokasi.mapsLink} target="_blank" rel="noopener noreferrer" class="maps-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            Buka di Google Maps
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* HERO */
+  .kontak-hero {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    border-bottom: 1px solid var(--border-glass);
+    margin-bottom: 3rem;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .hero-title {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+  .hero-sub {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  /* SECTION */
+  .kontak-section { padding-bottom: 2rem; }
+
+  /* GRID */
+  .kontak-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .kontak-grid { grid-template-columns: 1fr; }
+  }
+
+  /* INFO */
+  .info-col { display: flex; flex-direction: column; gap: 0.75rem; }
+  .info-card {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 0.875rem;
+    padding: 1rem 1.25rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+  .info-card:hover { border-color: var(--accent); }
+  .info-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 2px; }
+  .info-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.2rem;
+  }
+  .info-value {
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    display: block;
+    transition: color 0.2s;
+  }
+  .info-value:hover { color: var(--accent); }
+  .info-wa:hover { color: #10b981; }
+  .info-value-muted {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* SOSMED */
+  .sosmed-wrap {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 0.875rem;
+    padding: 1rem 1.25rem;
+  }
+  .mb-2 { margin-bottom: 0.5rem; }
+  .sosmed-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .sosmed-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .sosmed-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+  .sosmed-ig { background: rgba(236,72,153,0.12); color: #ec4899; border-color: rgba(236,72,153,0.2); }
+  .sosmed-yt { background: rgba(239,68,68,0.12);  color: #ef4444; border-color: rgba(239,68,68,0.2); }
+  .sosmed-fb { background: rgba(59,130,246,0.12); color: #3b82f6; border-color: rgba(59,130,246,0.2); }
+  .sosmed-tt { background: rgba(148,163,184,0.12);color: var(--text-secondary); border-color: rgba(148,163,184,0.2); }
+
+  /* FORM COL */
+  .form-col { display: flex; flex-direction: column; gap: 1.5rem; }
+  .form-card, .map-card {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+  .form-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 1.25rem;
+  }
+  .form-group { margin-bottom: 1rem; }
+  .form-label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+  }
+  .form-input {
+    width: 100%;
+    padding: 0.6rem 0.875rem;
+    font-size: 0.875rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 0.625rem;
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+  }
+  .form-input:focus { border-color: var(--accent); }
+  .form-textarea { resize: vertical; min-height: 100px; font-family: inherit; }
+  .form-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .form-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  /* MAP */
+  .map-wrap {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    margin-bottom: 0.875rem;
+  }
+  .map-iframe { width: 100%; height: 220px; border: none; display: block; }
+  .maps-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .maps-btn:hover { opacity: 0.75; }
+</style>

@@ -8,9 +8,10 @@ const cleanWaNumber = sekolah.Hp ? sekolah.Hp.replace(/\s+/g, "") : "";
 <footer class="site-footer">
   <div class="max-w-7xl mx-auto px-6 pt-8 pb-4">
     <div class="grid gap-5 md:grid-cols-4 items-stretch">
-
       <!-- LOGO -->
-      <div class="footer-card flex flex-col items-center text-center justify-start">
+      <div
+        class="footer-card flex flex-col items-center text-center justify-start"
+      >
         <div class="logo-wrap mb-3">
           <img
             src={import.meta.env.BASE_URL + sekolah.logo}
@@ -18,10 +19,16 @@ const cleanWaNumber = sekolah.Hp ? sekolah.Hp.replace(/\s+/g, "") : "";
             class="w-18 h-18 object-contain"
           />
         </div>
-        <h3 class="text-sm font-bold leading-tight tracking-wide" style="color: var(--text-primary)">
+        <h3
+          class="text-sm font-bold leading-tight tracking-wide"
+          style="color: var(--text-primary)"
+        >
           {sekolah.nama}
         </h3>
-        <p class="mt-1.5 text-xs leading-relaxed max-w-[180px]" style="color: var(--text-muted)">
+        <p
+          class="mt-1.5 text-xs leading-relaxed max-w-[180px]"
+          style="color: var(--text-muted)"
+        >
           {sekolah.slogan}
         </p>
       </div>
@@ -37,16 +44,34 @@ const cleanWaNumber = sekolah.Hp ? sekolah.Hp.replace(/\s+/g, "") : "";
             </a>
           </li>
 
-          {sekolah.Hp && (
-            <li>
-              <a href={`https://wa.me/${cleanWaNumber}`} target="_blank" rel="noopener noreferrer" class="contact-link contact-link--wa">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon w-3.5 h-3.5 flex-shrink-0">
-                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                </svg>
-                <span class="font-mono">Whatsapp: {sekolah.Hp}</span>
-              </a>
-            </li>
-          )}
+          {
+            sekolah.Hp && (
+              <li>
+                <a
+                  href={`https://wa.me/${cleanWaNumber}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="contact-link contact-link--wa"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="contact-icon w-3.5 h-3.5 flex-shrink-0"
+                  >
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                  </svg>
+                  <span class="font-mono">Whatsapp: {sekolah.Hp}</span>
+                </a>
+              </li>
+            )
+          }
 
           <li>
             <a href={`mailto:${sekolah.email}`} class="contact-link">
@@ -69,42 +94,63 @@ const cleanWaNumber = sekolah.Hp ? sekolah.Hp.replace(/\s+/g, "") : "";
         <h4 class="footer-section-title">Media Sosial</h4>
         <ul class="space-y-3 text-xs" style="color: var(--text-secondary)">
           <li>
-            <a href={sekolah.sosialMedia.instagram || "#"} class="social-link social-link--ig">
+            <a
+              href={sekolah.sosialMedia.instagram || "#"}
+              class="social-link social-link--ig"
+            >
               <svg class="w-4 h-4 fill-current social-icon" viewBox="0 0 24 24">
-                <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7z"/>
+                <path
+                  d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7z"
+                ></path>
               </svg>
               Instagram
             </a>
           </li>
           <li>
-            <a href={sekolah.sosialMedia.youtube || "#"} class="social-link social-link--yt">
+            <a
+              href={sekolah.sosialMedia.youtube || "#"}
+              class="social-link social-link--yt"
+            >
               <svg class="w-4 h-4 fill-current social-icon" viewBox="0 0 24 24">
-                <path d="M10 15l5-3-5-3v6z"/>
+                <path d="M10 15l5-3-5-3v6z"></path>
               </svg>
               YouTube
             </a>
           </li>
           <li>
-            <a href={sekolah.sosialMedia.facebook || "#"} class="social-link social-link--fb">
+            <a
+              href={sekolah.sosialMedia.facebook || "#"}
+              class="social-link social-link--fb"
+            >
               <svg class="w-4 h-4 fill-current social-icon" viewBox="0 0 24 24">
-                <path d="M22 12a10 10 0 1 0-11.5 9.95v-7.05H8v-2.9h2.5V9.3c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6v1.9H17l-.4 2.9h-2.3v7.05A10 10 0 0 0 22 12z"/>
+                <path
+                  d="M22 12a10 10 0 1 0-11.5 9.95v-7.05H8v-2.9h2.5V9.3c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6v1.9H17l-.4 2.9h-2.3v7.05A10 10 0 0 0 22 12z"
+                ></path>
               </svg>
               Facebook
             </a>
           </li>
           <li>
-            <a href={sekolah.sosialMedia.tiktok || "#"} class="social-link social-link--tt">
+            <a
+              href={sekolah.sosialMedia.tiktok || "#"}
+              class="social-link social-link--tt"
+            >
               <svg class="w-4 h-4 fill-current social-icon" viewBox="0 0 24 24">
-                <path d="M16 2c.6 2.4 2.2 4 4.6 4v3c-1.6 0-3-.5-4.6-1.5V15c0 3.3-2.7 6-6 6S4 18.3 4 15s2.7-6 6-6c.4 0 .8 0 1.2.1v3.2c-.4-.2-.8-.3-1.2-.3-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3V2h3z"/>
+                <path
+                  d="M16 2c.6 2.4 2.2 4 4.6 4v3c-1.6 0-3-.5-4.6-1.5V15c0 3.3-2.7 6-6 6S4 18.3 4 15s2.7-6 6-6c.4 0 .8 0 1.2.1v3.2c-.4-.2-.8-.3-1.2-.3-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3V2h3z"
+                ></path>
               </svg>
               TikTok
             </a>
           </li>
           <li>
-            <a href={sekolah.sosialMedia.threads || "#"} class="social-link social-link--th">
+            <a
+              href={sekolah.sosialMedia.threads || "#"}
+              class="social-link social-link--th"
+            >
               <svg class="w-4 h-4 fill-current social-icon" viewBox="0 0 24 24">
-                <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/>
-                <path d="M12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/>
+                <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"></path>
+                <path d="M12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"></path>
               </svg>
               Threads
             </a>
@@ -119,15 +165,17 @@ const cleanWaNumber = sekolah.Hp ? sekolah.Hp.replace(/\s+/g, "") : "";
           <iframe
             src={sekolah.lokasi.embedUrl}
             class="w-full h-full border-0"
-            loading="lazy"
-          ></iframe>
+            loading="lazy"></iframe>
         </div>
       </div>
     </div>
 
     <!-- COPYRIGHT -->
     <div class="mt-6 pt-4" style="border-top: 1px solid var(--border-color)">
-      <div class="flex justify-between text-xs" style="color: var(--text-muted)">
+      <div
+        class="flex justify-between text-xs"
+        style="color: var(--text-muted)"
+      >
         <p>&copy; {new Date().getFullYear()} {sekolah.nama}</p>
         <p>
           Powered by
@@ -150,6 +198,16 @@ const cleanWaNumber = sekolah.Hp ? sekolah.Hp.replace(/\s+/g, "") : "";
     transition: background 0.3s;
   }
 
+  .dark .footer-card {
+    background: #162032; /* bukan transparan — solid biar kontras */
+    border-color: rgba(148, 163, 184, 0.12);
+  }
+
+  .dark .logo-wrap {
+    background: #0f172a; /* satu level lebih gelap dari card */
+    border-color: rgba(148, 163, 184, 0.15);
+  }
+
   .footer-card {
     background: var(--bg-glass);
     backdrop-filter: var(--glass-blur);
@@ -158,7 +216,9 @@ const cleanWaNumber = sekolah.Hp ? sekolah.Hp.replace(/\s+/g, "") : "";
     border-radius: 1rem;
     padding: 1rem;
     box-shadow: var(--glass-shadow);
-    transition: border-color 0.2s, background 0.3s;
+    transition:
+      border-color 0.2s,
+      background 0.3s;
   }
   .footer-card:hover {
     border-color: var(--border-color);
@@ -189,11 +249,20 @@ const cleanWaNumber = sekolah.Hp ? sekolah.Hp.replace(/\s+/g, "") : "";
     text-decoration: none;
     transition: color 0.2s;
   }
-  .contact-link:hover { color: var(--accent); }
-  .contact-link--wa:hover { color: #10b981; }
+  .contact-link:hover {
+    color: var(--accent);
+  }
+  .contact-link--wa:hover {
+    color: #10b981;
+  }
 
-  .contact-icon { color: var(--accent); transition: transform 0.2s; }
-  .contact-link:hover .contact-icon { transform: scale(1.1); }
+  .contact-icon {
+    color: var(--accent);
+    transition: transform 0.2s;
+  }
+  .contact-link:hover .contact-icon {
+    transform: scale(1.1);
+  }
 
   .social-link {
     display: flex;
@@ -203,17 +272,44 @@ const cleanWaNumber = sekolah.Hp ? sekolah.Hp.replace(/\s+/g, "") : "";
     text-decoration: none;
     transition: color 0.2s;
   }
-  .social-icon { color: var(--text-muted); transition: color 0.2s, transform 0.2s; }
-  .social-link:hover .social-icon { transform: scale(1.1); }
+  .social-icon {
+    color: var(--text-muted);
+    transition:
+      color 0.2s,
+      transform 0.2s;
+  }
+  .social-link:hover .social-icon {
+    transform: scale(1.1);
+  }
 
-  .social-link--ig:hover { color: #ec4899; }
-  .social-link--ig:hover .social-icon { color: #ec4899; }
-  .social-link--yt:hover { color: #ef4444; }
-  .social-link--yt:hover .social-icon { color: #ef4444; }
-  .social-link--fb:hover { color: #3b82f6; }
-  .social-link--fb:hover .social-icon { color: #3b82f6; }
-  .social-link--tt:hover { color: var(--text-primary); }
-  .social-link--tt:hover .social-icon { color: var(--text-primary); }
-  .social-link--th:hover { color: var(--accent); }
-  .social-link--th:hover .social-icon { color: var(--accent); }
+  .social-link--ig:hover {
+    color: #ec4899;
+  }
+  .social-link--ig:hover .social-icon {
+    color: #ec4899;
+  }
+  .social-link--yt:hover {
+    color: #ef4444;
+  }
+  .social-link--yt:hover .social-icon {
+    color: #ef4444;
+  }
+  .social-link--fb:hover {
+    color: #3b82f6;
+  }
+  .social-link--fb:hover .social-icon {
+    color: #3b82f6;
+  }
+  .social-link--tt:hover {
+    color: var(--text-primary);
+  }
+  .social-link--tt:hover .social-icon {
+    color: var(--text-primary);
+  }
+  .social-link--th:hover {
+    color: var(--accent);
+  }
+  .social-link--th:hover .social-icon {
+    color: var(--accent);
+  }
 </style>

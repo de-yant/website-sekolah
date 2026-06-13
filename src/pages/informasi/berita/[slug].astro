@@ -1,0 +1,22 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { beritaList, kategoriList, kategoriWarna } from "../../../data/beritaList.js";
+
+
+export async function getStaticPaths() {
+  return beritaList.map((b) => ({
+    params: { slug: b.slug },
+    props: { berita: b },
+  }));
+}
+
+const { berita } = Astro.props;
+---
+
+<Layout title={berita.judul}>
+  <h1>{berita.judul}</h1>
+  <p>{berita.tanggal} - {berita.penulis}</p>
+  <div class="content">
+    {berita.ringkasan}
+  </div>
+</Layout>

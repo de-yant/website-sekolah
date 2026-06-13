@@ -1,0 +1,322 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const identitas = [
+  { label: "Nama Sekolah", value: "SMK 2 LPPM RI Majalaya" },
+  { label: "NPSN", value: "XXXXXXXX" },
+  { label: "Status", value: "Swasta" },
+  { label: "Akreditasi", value: "A" },
+  { label: "Tahun Berdiri", value: "19XX" },
+  { label: "Kepala Sekolah", value: "Drs. H. Nama Kepala, M.Pd." },
+  { label: "Alamat", value: "Jl. Nama Jalan No. XX, Majalaya" },
+  { label: "Kecamatan", value: "Majalaya" },
+  { label: "Kabupaten", value: "Bandung" },
+  { label: "Provinsi", value: "Jawa Barat" },
+  { label: "Kode Pos", value: "XXXXX" },
+  { label: "Telepon", value: "(022) XXX-XXXX" },
+  { label: "Email", value: "info@smk2lppmri.sch.id" },
+  { label: "Website", value: "www.smk2lppmri.sch.id" },
+];
+
+const fasilitas = [
+  { icon: "🏫", nama: "Ruang Kelas", jumlah: "XX Ruang" },
+  { icon: "💻", nama: "Lab Komputer", jumlah: "X Lab" },
+  { icon: "📚", nama: "Perpustakaan", jumlah: "1 Unit" },
+  { icon: "⚽", nama: "Lapangan Olahraga", jumlah: "1 Unit" },
+  { icon: "🔬", nama: "Lab Praktik", jumlah: "X Lab" },
+  { icon: "🕌", nama: "Mushola", jumlah: "1 Unit" },
+  { icon: "🏥", nama: "UKS", jumlah: "1 Unit" },
+  { icon: "🅿️", nama: "Area Parkir", jumlah: "1 Unit" },
+];
+---
+
+<Layout title="Profil Sekolah">
+
+  <!-- HERO -->
+  <section class="profil-hero">
+    <div class="hero-badge">Profil Sekolah</div>
+    <h1 class="hero-title">SMK 2 LPPM RI Majalaya</h1>
+    <p class="hero-sub">Mengenal lebih dekat sekolah kami</p>
+  </section>
+
+  <!-- SEJARAH -->
+  <section class="profil-section">
+    <div class="section-label">Sejarah Singkat</div>
+    <h2 class="section-title">Tentang Sekolah</h2>
+    <div class="sejarah-grid">
+      <div class="sejarah-foto">
+        <div class="foto-placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span>Foto Gedung Sekolah</span>
+        </div>
+      </div>
+      <div class="sejarah-teks">
+        <p>
+          SMK 2 LPPM RI Majalaya berdiri pada tahun 19XX sebagai salah satu sekolah kejuruan swasta yang bernaung di bawah Yayasan LPPM RI. Sejak awal berdirinya, sekolah ini berkomitmen untuk menghasilkan lulusan yang kompeten, berkarakter, dan siap memasuki dunia kerja maupun dunia industri.
+        </p>
+        <p>
+          Dengan pengalaman lebih dari XX tahun dalam dunia pendidikan vokasi, SMK 2 LPPM RI Majalaya terus berkembang dan berinovasi mengikuti perkembangan teknologi dan kebutuhan industri. Saat ini sekolah kami telah meraih Akreditasi A dan dipercaya oleh ribuan orang tua untuk mendidik putra-putri mereka.
+        </p>
+        <p>
+          Kami hadir untuk mencetak generasi muda Majalaya yang tidak hanya memiliki keahlian teknis, tetapi juga memiliki integritas, etos kerja tinggi, dan akhlak mulia sesuai dengan nilai-nilai kebangsaan dan keagamaan.
+        </p>
+        <div class="stat-row">
+          <div class="stat-item">
+            <span class="stat-num">1200+</span>
+            <span class="stat-label">Siswa Aktif</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">80+</span>
+            <span class="stat-label">Tenaga Pendidik</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">5</span>
+            <span class="stat-label">Kompetensi Keahlian</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">A</span>
+            <span class="stat-label">Akreditasi</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IDENTITAS -->
+  <section class="profil-section">
+    <div class="section-label">Data Resmi</div>
+    <h2 class="section-title">Identitas Sekolah</h2>
+    <div class="identitas-table">
+      {identitas.map((item) => (
+        <div class="identitas-row">
+          <span class="identitas-label">{item.label}</span>
+          <span class="identitas-sep">:</span>
+          <span class="identitas-value">{item.value}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- FASILITAS -->
+  <section class="profil-section">
+    <div class="section-label">Sarana & Prasarana</div>
+    <h2 class="section-title">Fasilitas Sekolah</h2>
+    <div class="fasilitas-grid">
+      {fasilitas.map((f) => (
+        <div class="fasilitas-card">
+          <span class="fasilitas-icon">{f.icon}</span>
+          <span class="fasilitas-nama">{f.nama}</span>
+          <span class="fasilitas-jumlah">{f.jumlah}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- GALERI -->
+  <section class="profil-section last">
+    <div class="section-label">Dokumentasi</div>
+    <h2 class="section-title">Galeri Sekolah</h2>
+    <div class="galeri-grid">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <div class="galeri-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span>Foto {i + 1}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* HERO */
+  .profil-hero {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    border-bottom: 1px solid var(--border-glass);
+    margin-bottom: 3rem;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .hero-title {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+  .hero-sub {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  /* SECTION */
+  .profil-section {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border-glass);
+  }
+  .profil-section.last {
+    border-bottom: none;
+    padding-bottom: 1rem;
+  }
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .section-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  /* SEJARAH */
+  .sejarah-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 2rem;
+  }
+  @media (max-width: 768px) {
+    .sejarah-grid { grid-template-columns: 1fr; }
+  }
+  .foto-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--bg-surface);
+    border: 2px dashed var(--border-color);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+  .sejarah-teks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    font-size: 0.9rem;
+    line-height: 1.85;
+    color: var(--text-secondary);
+  }
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+  @media (max-width: 480px) {
+    .stat-row { grid-template-columns: repeat(2, 1fr); }
+  }
+  .stat-item {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .stat-num {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--accent);
+  }
+  .stat-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+
+  /* IDENTITAS */
+  .identitas-table {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  .identitas-row {
+    display: grid;
+    grid-template-columns: 180px 16px 1fr;
+    gap: 0.5rem;
+    padding: 0.7rem 1.25rem;
+    font-size: 0.875rem;
+    border-bottom: 1px solid var(--border-glass);
+    transition: background 0.15s;
+  }
+  .identitas-row:last-child { border-bottom: none; }
+  .identitas-row:hover { background: var(--bg-surface); }
+  .identitas-label { color: var(--text-muted); font-weight: 500; }
+  .identitas-sep { color: var(--text-muted); }
+  .identitas-value { color: var(--text-primary); font-weight: 500; }
+
+  /* FASILITAS */
+  .fasilitas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+  .fasilitas-card {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 1rem;
+    padding: 1.25rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .fasilitas-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .fasilitas-icon { font-size: 1.75rem; }
+  .fasilitas-nama { font-size: 0.8rem; font-weight: 600; color: var(--text-primary); }
+  .fasilitas-jumlah { font-size: 0.75rem; color: var(--accent); }
+
+  /* GALERI */
+  .galeri-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  .galeri-item {
+    aspect-ratio: 4/3;
+    background: var(--bg-surface);
+    border: 2px dashed var(--border-color);
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    transition: border-color 0.2s;
+  }
+  .galeri-item:hover { border-color: var(--accent); }
+</style>

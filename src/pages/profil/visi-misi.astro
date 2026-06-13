@@ -1,0 +1,310 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const visi = "Menjadi Sekolah Menengah Kejuruan yang Unggul, Berkarakter, dan Berdaya Saing Global dalam Mencetak Generasi Kompeten dan Berakhlak Mulia.";
+
+const misi = [
+  "Menyelenggarakan pendidikan dan pelatihan kejuruan yang berkualitas sesuai standar nasional dan internasional.",
+  "Membentuk peserta didik yang beriman, bertakwa, dan berakhlak mulia melalui pembiasaan nilai-nilai islami.",
+  "Mengembangkan kompetensi keahlian siswa melalui pembelajaran berbasis industri dan teknologi terkini.",
+  "Menjalin kemitraan strategis dengan dunia usaha dan dunia industri (DUDI) dalam rangka peningkatan kualitas lulusan.",
+  "Menciptakan lingkungan belajar yang kondusif, inovatif, dan menyenangkan bagi seluruh warga sekolah.",
+  "Meningkatkan profesionalisme tenaga pendidik dan kependidikan secara berkelanjutan.",
+];
+
+const tujuan = [
+  {
+    icon: "🎓",
+    judul: "Lulusan Kompeten",
+    deskripsi: "Menghasilkan lulusan yang memiliki kompetensi keahlian sesuai kebutuhan dunia kerja dan industri.",
+  },
+  {
+    icon: "🌟",
+    judul: "Karakter Unggul",
+    deskripsi: "Membentuk peserta didik yang berkarakter, disiplin, jujur, dan bertanggung jawab.",
+  },
+  {
+    icon: "🤝",
+    judul: "Kemitraan Industri",
+    deskripsi: "Membangun jaringan kerjasama dengan industri untuk membuka peluang kerja bagi lulusan.",
+  },
+  {
+    icon: "🔬",
+    judul: "Inovasi Pembelajaran",
+    deskripsi: "Menerapkan metode pembelajaran modern berbasis teknologi dan project-based learning.",
+  },
+  {
+    icon: "🏆",
+    judul: "Prestasi Gemilang",
+    deskripsi: "Mendorong siswa berprestasi di tingkat lokal, nasional, maupun internasional.",
+  },
+  {
+    icon: "🌍",
+    judul: "Berdaya Saing Global",
+    deskripsi: "Mempersiapkan lulusan yang siap bersaing di era globalisasi dan revolusi industri 4.0.",
+  },
+];
+
+const nilaiUtama = [
+  { singkat: "I", kata: "Integritas", warna: "blue" },
+  { singkat: "N", kata: "Nilai Islami", warna: "green" },
+  { singkat: "O", kata: "Orientasi Mutu", warna: "amber" },
+  { singkat: "V", kata: "Visioner", warna: "purple" },
+  { singkat: "A", kata: "Adaptif", warna: "teal" },
+  { singkat: "S", kata: "Solidaritas", warna: "coral" },
+  { singkat: "I", kata: "Inovatif", warna: "blue" },
+];
+---
+
+<Layout title="Visi & Misi">
+
+  <!-- HERO -->
+  <section class="vm-hero">
+    <div class="hero-badge">Visi & Misi</div>
+    <h1 class="hero-title">Arah & Tujuan<br />SMK 2 LPPM RI Majalaya</h1>
+    <p class="hero-sub">Landasan kami dalam mencetak generasi unggul dan berkarakter</p>
+  </section>
+
+  <!-- VISI -->
+  <section class="vm-section">
+    <div class="section-label">Visi</div>
+    <h2 class="section-title">Visi Sekolah</h2>
+    <div class="visi-card">
+      <div class="visi-icon">👁️</div>
+      <blockquote class="visi-teks">"{visi}"</blockquote>
+    </div>
+  </section>
+
+  <!-- MISI -->
+  <section class="vm-section">
+    <div class="section-label">Misi</div>
+    <h2 class="section-title">Misi Sekolah</h2>
+    <div class="misi-list">
+      {misi.map((item, i) => (
+        <div class="misi-item">
+          <div class="misi-num">{i + 1}</div>
+          <p class="misi-teks">{item}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- TUJUAN -->
+  <section class="vm-section">
+    <div class="section-label">Tujuan</div>
+    <h2 class="section-title">Tujuan Sekolah</h2>
+    <div class="tujuan-grid">
+      {tujuan.map((t) => (
+        <div class="tujuan-card">
+          <span class="tujuan-icon">{t.icon}</span>
+          <h3 class="tujuan-judul">{t.judul}</h3>
+          <p class="tujuan-deskripsi">{t.deskripsi}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- NILAI UTAMA -->
+  <section class="vm-section last">
+    <div class="section-label">Nilai</div>
+    <h2 class="section-title">Nilai Utama</h2>
+    <div class="nilai-grid">
+      {nilaiUtama.map((n) => (
+        <div class={`nilai-card nilai-${n.warna}`}>
+          <span class="nilai-singkat">{n.singkat}</span>
+          <span class="nilai-kata">{n.kata}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* HERO */
+  .vm-hero {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    border-bottom: 1px solid var(--border-glass);
+    margin-bottom: 3rem;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .hero-title {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+  .hero-sub {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  /* SECTION */
+  .vm-section {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border-glass);
+  }
+  .vm-section.last {
+    border-bottom: none;
+    padding-bottom: 1rem;
+  }
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .section-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  /* VISI */
+  .visi-card {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-left: 4px solid var(--accent);
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  .visi-icon { font-size: 2rem; flex-shrink: 0; }
+  .visi-teks {
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.75;
+    color: var(--text-primary);
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* MISI */
+  .misi-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .misi-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 0.875rem;
+    padding: 1rem 1.25rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .misi-item:hover {
+    border-color: var(--accent);
+    transform: translateX(4px);
+  }
+  .misi-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .misi-teks {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0;
+    padding-top: 2px;
+  }
+
+  /* TUJUAN */
+  .tujuan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .tujuan-card {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 1rem;
+    padding: 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .tujuan-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+  .tujuan-icon { font-size: 1.75rem; }
+  .tujuan-judul {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+  }
+  .tujuan-deskripsi {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* NILAI */
+  .nilai-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+  }
+  .nilai-card {
+    border-radius: 1rem;
+    padding: 1.25rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+    border: 1px solid var(--border-glass);
+    transition: transform 0.2s;
+  }
+  .nilai-card:hover { transform: translateY(-3px); }
+  .nilai-singkat {
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .nilai-kata {
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .nilai-blue   { background: rgba(14,165,233,0.1);  color: var(--accent);   border-color: rgba(14,165,233,0.2); }
+  .nilai-green  { background: rgba(16,185,129,0.1);  color: #10b981;         border-color: rgba(16,185,129,0.2); }
+  .nilai-amber  { background: rgba(245,158,11,0.1);  color: #f59e0b;         border-color: rgba(245,158,11,0.2); }
+  .nilai-purple { background: rgba(139,92,246,0.1);  color: #8b5cf6;         border-color: rgba(139,92,246,0.2); }
+  .nilai-teal   { background: rgba(20,184,166,0.1);  color: #14b8a6;         border-color: rgba(20,184,166,0.2); }
+  .nilai-coral  { background: rgba(239,68,68,0.1);   color: #ef4444;         border-color: rgba(239,68,68,0.2);  }
+</style>

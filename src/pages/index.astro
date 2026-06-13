@@ -1,18 +1,906 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
+import { sekolah } from "../data/sekolah";
+
+const slides = [
+  {
+    judul: "Selamat Datang di SMK 2 LPPM RI Majalaya",
+    sub: "Mencetak Generasi Unggul, Berkarakter dan Kompeten",
+    bg: "slide-1",
+  },
+  {
+    judul: "Pendidikan Vokasi Berkualitas",
+    sub: "Program keahlian yang relevan dengan dunia industri dan kerja",
+    bg: "slide-2",
+  },
+  {
+    judul: "Raih Prestasi Bersama Kami",
+    sub: "Didukung fasilitas modern dan tenaga pengajar berpengalaman",
+    bg: "slide-3",
+  },
+];
+
+const struktural = [
+  { jabatan: "Wakasek Kurikulum", nama: "Nama Wakasek, S.Pd." },
+  { jabatan: "Wakasek Kesiswaan", nama: "Nama Wakasek, S.Pd." },
+  { jabatan: "Wakasek Hubin", nama: "Nama Wakasek, S.Pd." },
+  { jabatan: "Wakasek Sarpras", nama: "Nama Wakasek, S.Pd." },
+  { jabatan: "Wakasek BKK", nama: "Nama Wakasek, S.Pd." },
+  { jabatan: "Kepala TU", nama: "Nama Kepala TU, S.Sos." },
+  { jabatan: "Operator", nama: "Nama Operator, S.Kom." },
+];
+
+const statistik = [
+  { label: "Total Siswa", nilai: "1.240", ikon: "👨‍🎓" },
+  { label: "Tenaga Pendidik", nilai: "68", ikon: "👨‍🏫" },
+  { label: "Program Keahlian", nilai: "6", ikon: "📚" },
+  { label: "Lulusan Terserap Kerja", nilai: "87%", ikon: "💼" },
+];
+
+const berita = [
+  {
+    judul: "Siswa SMK 2 LPPM RI Raih Juara 1 LKS Tingkat Provinsi",
+    tanggal: "10 Juni 2025",
+    kategori: "Prestasi",
+  },
+  {
+    judul: "Pelaksanaan Praktik Kerja Lapangan Semester Genap 2024/2025",
+    tanggal: "5 Juni 2025",
+    kategori: "Akademik",
+  },
+  {
+    judul: "Penerimaan Peserta Didik Baru Tahun Ajaran 2025/2026 Resmi Dibuka",
+    tanggal: "1 Juni 2025",
+    kategori: "Pengumuman",
+  },
+  {
+    judul: "Workshop Kewirausahaan bersama Alumni dan Pelaku UMKM Lokal",
+    tanggal: "28 Mei 2025",
+    kategori: "Kegiatan",
+  },
+  {
+    judul: "Tim Futsal Sekolah Melaju ke Babak Final Turnamen Antar SMK",
+    tanggal: "20 Mei 2025",
+    kategori: "Olahraga",
+  },
+  {
+    judul: "Kunjungan Industri ke PT. XYZ — Membuka Wawasan Dunia Kerja",
+    tanggal: "15 Mei 2025",
+    kategori: "Akademik",
+  },
+];
+
+const prestasi = [
+  { nama: "Juara 1 LKS Teknik Pemesinan", level: "Provinsi", tahun: "2025" },
+  { nama: "Juara 2 Olimpiade Matematika", level: "Kabupaten", tahun: "2025" },
+  { nama: "Juara 1 Debat Bahasa Inggris", level: "Kabupaten", tahun: "2024" },
+  {
+    nama: "Juara 3 LKS Rekayasa Perangkat Lunak",
+    level: "Provinsi",
+    tahun: "2024",
+  },
+];
+
+const linkTerkait = [
+  { nama: "Kemdikbud RI", url: "https://www.kemdikbud.go.id", ikon: "🏛️" },
+  {
+    nama: "Dinas Pendidikan Jabar",
+    url: "https://disdik.jabarprov.go.id",
+    ikon: "🏫",
+  },
+  { nama: "BSNP", url: "https://bsnp-indonesia.org", ikon: "📋" },
+  { nama: "SIAKAD Sekolah", url: "/akademik/siakad", ikon: "🖥️" },
+  { nama: "PPDB Online", url: "#", ikon: "📝" },
+  { nama: "BKK SMK", url: "#", ikon: "💼" },
+];
 ---
 
 <Layout title="Beranda">
-  <Hero />
+  <!-- ══════════════════════════════════
+       1. HERO SLIDER
+  ══════════════════════════════════ -->
+  <section class="slider-section" id="hero-slider">
+    <div class="slider-track" id="slider-track">
+      {
+        slides.map((s, i) => (
+          <div class={`slide ${s.bg}`}>
+            <div class="slide-overlay" />
+            <div class="slide-content">
+              <span class="slide-badge">SMK 2 LPPM RI Majalaya</span>
+              <h1 class="slide-title">{s.judul}</h1>
+              <p class="slide-sub">{s.sub}</p>
+              <div class="slide-actions">
+                <a href="/profil/sejarah" class="btn-primary">
+                  Tentang Kami
+                </a>
+                <a href="/akademik/siakad" class="btn-ghost">
+                  SIAKAD →
+                </a>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
 
-  <section class="max-w-7xl mx-auto px-4 py-16">
-    <h2 class="text-3xl font-bold mb-8">
-      Selamat Datang
-    </h2>
+    <button class="slider-prev" id="slider-prev" aria-label="Sebelumnya">&#8249;</button>
+    <button class="slider-next" id="slider-next" aria-label="Berikutnya">&#8250;</button>
 
-    <p>
-      Website resmi SMK 2 LPPM RI.
-    </p>
+    <div class="slider-dots" id="slider-dots">
+      {
+        slides.map((_, i) => (
+          <button
+            class={`dot ${i === 0 ? "active" : ""}`}
+            data-index={i}
+            aria-label={`Slide ${i + 1}`}
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       2. SAMBUTAN
+  ══════════════════════════════════ -->
+  <section class="section sambutan-section">
+    <div class="section-inner">
+      <div class="sambutan-grid">
+        <div class="sambutan-foto-col">
+          <div class="foto-placeholder large">
+            <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+              <circle cx="12" cy="8" r="4"></circle>
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path>
+            </svg>
+          </div>
+          <div class="ks-identity">
+            <p class="ks-nama">Drs. H. Nama Kepala, M.Pd.</p>
+            <p class="ks-jabatan">Kepala</p>
+            <p class="ks-sekolah">SMK 2 LPPM RI Majalaya</p>
+          </div>
+        </div>
+        <div class="sambutan-teks-col">
+          <div class="section-eyebrow">Sambutan</div>
+          <h2 class="section-heading">Kepala Sekolah</h2>
+          <div class="sambutan-body">
+            <p>Assalamu'alaikum Warahmatullahi Wabarakatuh,</p>
+            <p>
+              Puji syukur kehadirat Allah SWT atas segala limpahan rahmat dan
+              karunia-Nya sehingga SMK 2 LPPM RI Majalaya terus berkembang menjadi
+              lembaga pendidikan vokasi yang unggul dan terpercaya di Kabupaten
+              Bandung.
+            </p>
+            <p>
+              Kami berkomitmen untuk terus meningkatkan kualitas pendidikan
+              kejuruan yang tidak hanya berfokus pada keterampilan teknis, tetapi
+              juga pada pembentukan karakter dan akhlak mulia setiap peserta
+              didik.
+            </p>
+            <p>Wassalamu'alaikum Warahmatullahi Wabarakatuh.</p>
+          </div>
+          <div class="ttd">
+            <p>Majalaya, 2025</p>
+            <p class="ttd-label">Kepala Sekolah,</p>
+            <div class="ttd-line"></div>
+            <p class="ttd-nama">Drs. H. Nama Kepala, M.Pd.</p>
+            <p class="ttd-nip">NIP. 19XXXXXXXXXX</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       3. STRUKTURAL
+  ══════════════════════════════════ -->
+  <section class="section struktural-section">
+    <div class="section-inner">
+      <div class="section-eyebrow text-center">Organisasi</div>
+      <h2 class="section-heading text-center">Pejabat Struktural</h2>
+      <div class="struktural-grid">
+        {
+          struktural.map((p) => (
+            <div class="card struktural-card">
+              <div class="foto-placeholder small">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="12" cy="8" r="4" />
+                  <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                </svg>
+              </div>
+              <p class="struktural-nama">{p.nama}</p>
+              <p class="struktural-jabatan">{p.jabatan}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       4. STATISTIK
+  ══════════════════════════════════ -->
+  <section class="statistik-section">
+    <div class="section-inner">
+      <div class="section-eyebrow text-center statistik-eyebrow">Statistik</div>
+      <h2 class="section-heading text-center statistik-heading">Data Sekolah</h2>
+      <div class="statistik-grid">
+        {
+          statistik.map((s) => (
+            <div class="statistik-card">
+              <span class="statistik-ikon">{s.ikon}</span>
+              <p class="statistik-nilai">{s.nilai}</p>
+              <p class="statistik-label">{s.label}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       5. BERITA TERBARU
+  ══════════════════════════════════ -->
+  <section class="section berita-section">
+    <div class="section-inner">
+      <div class="section-header-center">
+        <div class="section-eyebrow text-center">Informasi</div>
+        <h2 class="section-heading text-center">Berita Terbaru</h2>
+        <a href="/berita" class="btn-outline">Lihat Semua →</a>
+      </div>
+      <div class="berita-grid">
+        {
+          berita.map((b) => (
+            <a href="/berita" class="card berita-card">
+              <div class="berita-thumb">
+                <div class="berita-thumb-placeholder">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M3 9h18M9 21V9" />
+                  </svg>
+                </div>
+                <span class="berita-kategori">{b.kategori}</span>
+              </div>
+              <div class="berita-body">
+                <p class="berita-tanggal">{b.tanggal}</p>
+                <p class="berita-judul">{b.judul}</p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       6. PRESTASI TERBARU
+  ══════════════════════════════════ -->
+  <section class="section prestasi-section">
+    <div class="section-inner">
+      <div class="section-header-center">
+        <div class="section-eyebrow text-center">Kebanggaan Sekolah</div>
+        <h2 class="section-heading text-center">Prestasi Terbaru</h2>
+        <a href="/prestasi" class="btn-outline">Lihat Semua →</a>
+      </div>
+      <div class="prestasi-list">
+        {
+          prestasi.map((p, i) => (
+            <div class="card prestasi-item">
+              <div class="prestasi-rank">{i + 1}</div>
+              <div class="prestasi-info">
+                <p class="prestasi-nama">{p.nama}</p>
+                <p class="prestasi-meta">
+                  Tingkat {p.level} · {p.tahun}
+                </p>
+              </div>
+              <div class={`prestasi-badge level-${p.level.toLowerCase()}`}>
+                {p.level}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       7. LINK TERKAIT
+  ══════════════════════════════════ -->
+  <section class="section link-section">
+    <div class="section-inner">
+      <div class="section-eyebrow text-center">Tautan</div>
+      <h2 class="section-heading text-center">Link Terkait</h2>
+      <div class="link-grid">
+        {
+          linkTerkait.map((l) => (
+            <a href={l.url} target="_blank" rel="noopener noreferrer" class="card link-card">
+              <span class="link-ikon">{l.ikon}</span>
+              <span class="link-nama">{l.nama}</span>
+              <span class="link-arrow">→</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
   </section>
 </Layout>
+
+<style>
+  /* ══════════════════════════════════════════════════
+     DESIGN TOKENS — Light & Dark
+  ══════════════════════════════════════════════════ */
+
+  /* Light mode: page bg = abu-abu lembut, card = putih */
+  :root {
+    --page-bg:        #f0f2f5;        /* abu-abu lembut untuk body */
+    --card-bg:        #ffffff;        /* putih untuk card */
+    --card-border:    rgba(0,0,0,0.07);
+    --card-shadow:    0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.05);
+
+    --section-alt-bg: #e8eaed;        /* section alternating (lebih gelap sedikit) */
+    --text-primary:   #0f172a;
+    --text-secondary: #475569;
+    --text-muted:     #94a3b8;
+    --accent:         #0ea5e9;
+    --accent-hover:   #0284c7;
+    --border-color:   #e2e8f0;
+    --border-glass:   rgba(0,0,0,0.06);
+  }
+
+  /* Dark mode: page bg = gelap, card = lebih terang */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --page-bg:        #0d1117;        /* sangat gelap untuk body */
+      --card-bg:        #161b22;        /* card sedikit lebih terang */
+      --card-border:    rgba(255,255,255,0.08);
+      --card-shadow:    0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+
+      --section-alt-bg: #111318;        /* section alternating (lebih gelap dari card) */
+      --text-primary:   #e2e8f0;
+      --text-secondary: #94a3b8;
+      --text-muted:     #64748b;
+      --accent:         #38bdf8;
+      --accent-hover:   #7dd3fc;
+      --border-color:   rgba(255,255,255,0.08);
+      --border-glass:   rgba(255,255,255,0.06);
+    }
+  }
+
+  /* Jika layout menggunakan class dark secara manual */
+  [data-theme="dark"] {
+    --page-bg:        #162032;
+    --card-bg:        #ffffff;
+    --card-border:    rgba(255,255,255,0.08);
+    --card-shadow:    0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+    --section-alt-bg: #111318;
+    --text-primary:   #e2e8f0;
+    --text-secondary: #94a3b8;
+    --text-muted:     #64748b;
+    --accent:         #38bdf8;
+    --accent-hover:   #7dd3fc;
+    --border-color:   rgba(255,255,255,0.08);
+    --border-glass:   rgba(255, 255, 255, 0.641);
+  }
+
+  /* ── CARD BASE ── */
+  /* Semua elemen yang pakai class .card mendapat style card */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-shadow);
+    border-radius: 1.25rem;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.12);
+  }
+
+  /* ── GLOBAL SECTION ── */
+  .section {
+    padding: 3.5rem 2rem;
+    background: var(--card-bg);
+    border-radius: 1.75rem;
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-shadow);
+    margin: 0 1rem 1.25rem;
+  }
+
+  /* Section dengan background alternatif */
+  .struktural-section,
+  .berita-section,
+  .prestasi-section {
+    background: var(--section-alt-bg);
+    border-color: var(--border-color);
+  }
+
+  /* Hapus border yang bertabrakan dengan rounded section */
+  .sambutan-section { border-bottom: none; }
+  .berita-section   { border-bottom: none; }
+  .link-section     { border-top: none; }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .section-heading {
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+  .text-center { text-align: center; }
+  .section-header-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .section-header-row .section-heading { margin-bottom: 0; }
+  .link-semua {
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+    white-space: nowrap;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .link-semua:hover { border-color: var(--accent); }
+  .section-header-center {
+    text-align: center;
+    margin-bottom: 1.75rem;
+  }
+  .section-header-center .section-heading {
+    margin-bottom: 0.75rem;
+  }
+  .link-semua-center {
+    display: inline-block;
+  }
+  .btn-outline {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.55rem 1.75rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-outline:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  /* ── FOTO PLACEHOLDER ── */
+  .foto-placeholder {
+    background: var(--page-bg);
+    border: 2px dashed var(--border-color);
+    border-radius: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+  }
+  .foto-placeholder.large {
+    width: 100%;
+    aspect-ratio: 3/4;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+  .foto-placeholder.small {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: var(--page-bg);
+  }
+
+  /* ══════════════════════════
+     1. SLIDER
+  ══════════════════════════ */
+  .slider-section {
+    position: relative;
+    overflow: hidden;
+    height: 520px;
+    margin-bottom: 1.25rem;
+  }
+  .slider-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .slide-1 { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); }
+  .slide-2 { background: linear-gradient(135deg, #0f2a1a 0%, #0f4e2a 100%); }
+  .slide-3 { background: linear-gradient(135deg, #1a0f2a 0%, #3a1a5f 100%); }
+  .slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+  }
+  .slide-content {
+    position: relative;
+    z-index: 1;
+    padding: 2rem 3rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .slide-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #38bdf8;
+    border: 1px solid #38bdf8;
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .slide-title {
+    font-size: clamp(1.6rem, 4vw, 2.75rem);
+    font-weight: 800;
+    color: #f1f5f9;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .slide-sub {
+    font-size: 1rem;
+    color: #94a3b8;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  .slide-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-block;
+    padding: 0.65rem 1.5rem;
+    background: #0ea5e9;
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 0.6rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #0284c7; }
+  .btn-ghost {
+    display: inline-block;
+    padding: 0.65rem 1.5rem;
+    color: #f1f5f9;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 0.6rem;
+    border: 1px solid rgba(241,245,249,0.3);
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-ghost:hover { background: rgba(241,245,249,0.1); }
+
+  .slider-prev,
+  .slider-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    line-height: 1;
+  }
+  .slider-prev { left: 1.25rem; }
+  .slider-next { right: 1.25rem; }
+  .slider-prev:hover,
+  .slider-next:hover { background: rgba(255,255,255,0.28); }
+  .slider-dots {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .dot.active { background: #38bdf8; transform: scale(1.3); }
+
+  /* ══════════════════════════
+     2. SAMBUTAN
+  ══════════════════════════ */
+  .sambutan-section {
+    border-bottom: 1px solid var(--border-color);
+  }
+  .sambutan-grid {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  @media (max-width: 720px) {
+    .sambutan-grid { grid-template-columns: 1fr; }
+    .foto-placeholder.large { max-width: 200px; }
+  }
+  .sambutan-foto-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .ks-identity { text-align: center; }
+  .ks-nama {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+  }
+  .ks-jabatan { font-size: 0.78rem; color: var(--accent); font-weight: 600; }
+  .ks-sekolah { font-size: 0.78rem; color: var(--text-muted); }
+  .sambutan-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    font-size: 0.9rem;
+    line-height: 1.85;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+  .ttd { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.8; text-align: right; margin-left: auto; }
+  .ttd-label { margin-bottom: 2rem; }
+  .ttd-line { width: 160px; border-top: 1px solid var(--border-color); margin-bottom: 0.5rem; margin-left: auto; }
+  .ttd-nama { font-weight: 700; color: var(--text-primary); }
+  .ttd-nip { color: var(--text-muted); font-size: 0.8rem; }
+
+  /* ══════════════════════════
+     3. STRUKTURAL
+  ══════════════════════════ */
+  .struktural-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .struktural-card {
+    width: calc(25% - 0.75rem);
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+  }
+  @media (max-width: 720px) {
+    .struktural-card { width: calc(50% - 0.5rem); }
+  }
+  .struktural-nama { font-size: 0.8rem; font-weight: 600; color: var(--text-primary); line-height: 1.4; }
+  .struktural-jabatan { font-size: 0.73rem; color: var(--accent); font-weight: 500; }
+
+  /* ══════════════════════════
+     4. STATISTIK
+  ══════════════════════════ */
+  .statistik-section {
+    background: var(--section-alt-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-shadow);
+    padding: 3rem 2rem;
+    border-radius: 1.75rem;
+    margin: 0 1rem 1.25rem;
+    overflow: hidden;
+  }
+  .statistik-eyebrow {
+    margin-bottom: 0.35rem;
+  }
+  .statistik-heading {
+    margin-bottom: 1.75rem;
+  }
+  .statistik-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .statistik-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-shadow);
+    border-radius: 1.25rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .statistik-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .statistik-ikon { font-size: 2rem; }
+  .statistik-nilai { font-size: 2.25rem; font-weight: 800; color: var(--text-primary); line-height: 1; }
+  .statistik-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+
+  /* ══════════════════════════
+     5. BERITA
+  ══════════════════════════ */
+  .berita-section {
+    border-bottom: 1px solid var(--border-color);
+  }
+  .berita-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+  .berita-card {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .berita-card:hover { transform: translateY(-3px); }
+  .berita-thumb {
+    aspect-ratio: 16/9;
+    background: var(--section-alt-bg);
+    border-bottom: 1px solid var(--card-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    position: relative;
+  }
+  .berita-thumb-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+  .berita-kategori {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+  }
+  .berita-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    flex: 1;
+  }
+  .berita-tanggal { font-size: 0.75rem; color: var(--text-muted); }
+  .berita-judul { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); line-height: 1.5; }
+
+  /* ══════════════════════════
+     6. PRESTASI
+  ══════════════════════════ */
+  .prestasi-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .prestasi-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+  }
+  .prestasi-rank {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .prestasi-info { flex: 1; }
+  .prestasi-nama { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.2rem; }
+  .prestasi-meta { font-size: 0.78rem; color: var(--text-muted); }
+  .prestasi-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .level-provinsi {
+    background: rgba(14,165,233,0.12);
+    color: var(--accent);
+    border: 1px solid rgba(14,165,233,0.25);
+  }
+  .level-kabupaten {
+    background: rgba(16,185,129,0.12);
+    color: #059669;
+    border: 1px solid rgba(16,185,129,0.25);
+  }
+
+  /* ══════════════════════════
+     7. LINK TERKAIT
+  ══════════════════════════ */
+  .link-section {
+    border-top: 1px solid var(--border-color);
+  }
+  .link-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    text-decoration: none;
+  }
+  .link-card:hover { transform: translateX(3px); }
+  .link-ikon { font-size: 1.25rem; flex-shrink: 0; }
+  .link-nama { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); flex: 1; }
+  .link-arrow { font-size: 0.85rem; color: var(--text-muted); }
+</style>
+
+<script is:inline>
+  const track = document.getElementById("slider-track");
+  const dots = document.querySelectorAll(".dot");
+  const total = dots.length;
+  let current = 0;
+  let timer;
+
+  function goTo(n) {
+    current = (n + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle("active", i === current));
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(next, 5000);
+  }
+
+  document.getElementById("slider-next")?.addEventListener("click", () => { next(); startTimer(); });
+  document.getElementById("slider-prev")?.addEventListener("click", () => { prev(); startTimer(); });
+  dots.forEach((d) => d.addEventListener("click", () => { goTo(+d.dataset.index); startTimer(); }));
+
+  startTimer();
+</script>

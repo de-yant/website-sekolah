@@ -1,0 +1,306 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const guru = [
+  { nama: "Nama Guru", mapel: "Matematika", status: "PNS", foto: null },
+  { nama: "Nama Guru", mapel: "Bahasa Indonesia", status: "PNS", foto: null },
+  { nama: "Nama Guru", mapel: "Bahasa Inggris", status: "GTY", foto: null },
+  { nama: "Nama Guru", mapel: "Fisika", status: "GTT", foto: null },
+  { nama: "Nama Guru", mapel: "Kimia", status: "GTT", foto: null },
+  { nama: "Nama Guru", mapel: "Biologi", status: "GTY", foto: null },
+  { nama: "Nama Guru", mapel: "Sejarah Indonesia", status: "PNS", foto: null },
+  { nama: "Nama Guru", mapel: "PKn", status: "PNS", foto: null },
+  { nama: "Nama Guru", mapel: "Pendidikan Agama Islam", status: "GTY", foto: null },
+  { nama: "Nama Guru", mapel: "Penjaskes", status: "GTT", foto: null },
+  { nama: "Nama Guru", mapel: "Seni Budaya", status: "GTT", foto: null },
+  { nama: "Nama Guru", mapel: "Prakarya & Kewirausahaan", status: "GTY", foto: null },
+  { nama: "Nama Guru", mapel: "Teknik Komputer & Jaringan", status: "GTY", foto: null },
+  { nama: "Nama Guru", mapel: "Rekayasa Perangkat Lunak", status: "GTT", foto: null },
+  { nama: "Nama Guru", mapel: "Multimedia", status: "GTT", foto: null },
+  { nama: "Nama Guru", mapel: "Akuntansi", status: "GTY", foto: null },
+  { nama: "Nama Guru", mapel: "Administrasi Perkantoran", status: "GTY", foto: null },
+  { nama: "Nama Guru", mapel: "Pemasaran", status: "GTT", foto: null },
+  { nama: "Nama Guru", mapel: "BK / Bimbingan Konseling", status: "PNS", foto: null },
+  { nama: "Nama Guru", mapel: "Bahasa Sunda", status: "GTT", foto: null },
+];
+
+const staf = [
+  { nama: "Nama Staf", jabatan: "Kepala Tata Usaha", divisi: "Tata Usaha", foto: null },
+  { nama: "Nama Staf", jabatan: "Staf Administrasi", divisi: "Tata Usaha", foto: null },
+  { nama: "Nama Staf", jabatan: "Staf Keuangan", divisi: "Keuangan", foto: null },
+  { nama: "Nama Staf", jabatan: "Bendahara", divisi: "Keuangan", foto: null },
+  { nama: "Nama Staf", jabatan: "Operator Sekolah", divisi: "IT & Data", foto: null },
+  { nama: "Nama Staf", jabatan: "Teknisi Komputer", divisi: "IT & Data", foto: null },
+  { nama: "Nama Staf", jabatan: "Pustakawan", divisi: "Perpustakaan", foto: null },
+  { nama: "Nama Staf", jabatan: "Staf Perpustakaan", divisi: "Perpustakaan", foto: null },
+  { nama: "Nama Staf", jabatan: "Petugas Keamanan", divisi: "Keamanan", foto: null },
+  { nama: "Nama Staf", jabatan: "Petugas Keamanan", divisi: "Keamanan", foto: null },
+  { nama: "Nama Staf", jabatan: "Petugas Kebersihan", divisi: "Kebersihan", foto: null },
+  { nama: "Nama Staf", jabatan: "Petugas Kebersihan", divisi: "Kebersihan", foto: null },
+];
+
+const statusColor: Record<string, string> = {
+  PNS: "status-pns",
+  GTY: "status-gty",
+  GTT: "status-gtt",
+};
+
+const divisiColor: Record<string, string> = {
+  "Tata Usaha":    "divisi-tu",
+  "Keuangan":      "divisi-keu",
+  "IT & Data":     "divisi-it",
+  "Perpustakaan":  "divisi-pustaka",
+  "Keamanan":      "divisi-keamanan",
+  "Kebersihan":    "divisi-kebersihan",
+};
+
+const divisiList = [...new Set(staf.map((s) => s.divisi))];
+---
+
+<Layout title="Guru & Staf">
+
+  <!-- HERO -->
+  <section class="gs-hero">
+    <div class="hero-badge">Sumber Daya Manusia</div>
+    <h1 class="hero-title">Guru & Staf</h1>
+    <p class="hero-sub">Tenaga pendidik dan kependidikan SMK 2 LPPM RI Majalaya</p>
+    <div class="hero-stats">
+      <div class="hstat">
+        <span class="hstat-num">{guru.length}</span>
+        <span class="hstat-label">Guru</span>
+      </div>
+      <div class="hstat-divider"></div>
+      <div class="hstat">
+        <span class="hstat-num">{staf.length}</span>
+        <span class="hstat-label">Staf</span>
+      </div>
+      <div class="hstat-divider"></div>
+      <div class="hstat">
+        <span class="hstat-num">{guru.filter(g => g.status === "PNS").length}</span>
+        <span class="hstat-label">PNS</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- GURU -->
+  <section class="gs-section">
+    <div class="section-label">Tenaga Pendidik</div>
+    <h2 class="section-title">Daftar Guru</h2>
+    <div class="guru-grid">
+      {guru.map((g) => (
+        <div class="guru-card">
+          <div class="card-foto">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            </svg>
+          </div>
+          <div class="card-info">
+            <p class="card-nama">{g.nama}</p>
+            <p class="card-sub">{g.mapel}</p>
+          </div>
+          <span class={`badge ${statusColor[g.status]}`}>{g.status}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- STAF -->
+  <section class="gs-section last">
+    <div class="section-label">Tenaga Kependidikan</div>
+    <h2 class="section-title">Daftar Staf</h2>
+
+    {divisiList.map((divisi) => (
+      <div class="divisi-group">
+        <h3 class="divisi-title">
+          <span class={`divisi-badge ${divisiColor[divisi]}`}>{divisi}</span>
+        </h3>
+        <div class="staf-grid">
+          {staf.filter(s => s.divisi === divisi).map((s) => (
+            <div class="staf-card">
+              <div class="card-foto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+                </svg>
+              </div>
+              <div class="card-info">
+                <p class="card-nama">{s.nama}</p>
+                <p class="card-sub">{s.jabatan}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </section>
+
+</Layout>
+
+<style>
+  /* HERO */
+  .gs-hero {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    border-bottom: 1px solid var(--border-glass);
+    margin-bottom: 3rem;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .hero-title {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+  .hero-sub {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+  .hero-stats {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 999px;
+    padding: 0.75rem 2rem;
+  }
+  .hstat { display: flex; flex-direction: column; align-items: center; gap: 0.1rem; }
+  .hstat-num { font-size: 1.25rem; font-weight: 800; color: var(--accent); }
+  .hstat-label { font-size: 0.7rem; color: var(--text-muted); }
+  .hstat-divider { width: 1px; height: 2rem; background: var(--border-color); }
+
+  /* SECTION */
+  .gs-section {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border-glass);
+  }
+  .gs-section.last { border-bottom: none; padding-bottom: 1rem; }
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .section-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  /* GURU GRID */
+  .guru-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.75rem;
+  }
+  .guru-card {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 0.875rem;
+    padding: 0.875rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .guru-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* STAF */
+  .divisi-group { margin-bottom: 1.75rem; }
+  .divisi-title { margin-bottom: 0.75rem; }
+  .staf-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.75rem;
+  }
+  .staf-card {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 0.875rem;
+    padding: 0.875rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .staf-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* SHARED CARD PARTS */
+  .card-foto {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-surface);
+    border: 1px dashed var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+  .card-info { flex: 1; min-width: 0; }
+  .card-nama {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .card-sub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* BADGES */
+  .badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+  .status-pns  { background: rgba(14,165,233,0.15); color: #0ea5e9; }
+  .status-gty  { background: rgba(16,185,129,0.15); color: #10b981; }
+  .status-gtt  { background: rgba(245,158,11,0.15); color: #f59e0b; }
+
+  .divisi-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+  }
+  .divisi-tu        { background: rgba(14,165,233,0.12);  color: #0ea5e9; }
+  .divisi-keu       { background: rgba(16,185,129,0.12);  color: #10b981; }
+  .divisi-it        { background: rgba(139,92,246,0.12);  color: #8b5cf6; }
+  .divisi-pustaka   { background: rgba(245,158,11,0.12);  color: #f59e0b; }
+  .divisi-keamanan  { background: rgba(239,68,68,0.12);   color: #ef4444; }
+  .divisi-kebersihan{ background: rgba(20,184,166,0.12);  color: #14b8a6; }
+</style>

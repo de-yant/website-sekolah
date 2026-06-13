@@ -1,0 +1,50 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { galeriList } from "../../../data/galeriList.js";
+---
+
+<Layout title="Galeri Kegiatan">
+  <section class="galeri-hero">
+    <h1>Galeri Kegiatan</h1>
+    <p>Dokumentasi aktivitas SMK 2 LPPM RI Majalaya</p>
+  </section>
+
+  <div class="galeri-grid">
+    {galeriList.map((item) => (
+      <div class="galeri-card">
+        <div class="card-img">
+          <img src={item.thumb} alt={item.judul} onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+          <div class="thumb-fallback">🖼️</div>
+        </div>
+        <div class="card-content">
+          <span class="kat-badge">{item.kategori}</span>
+          <h3>{item.judul}</h3>
+          <small>{item.tanggal}</small>
+        </div>
+      </div>
+    ))}
+  </div>
+</Layout>
+
+<style>
+  .galeri-hero { text-align: center; padding: 3rem 0; }
+  .galeri-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 1.5rem; 
+  }
+  .galeri-card { 
+    background: var(--bg-glass); 
+    border: 1px solid var(--border-glass); 
+    border-radius: 1rem; 
+    overflow: hidden; 
+  }
+  .card-img { height: 200px; background: #eee; position: relative; }
+  .card-img img { width: 100%; height: 100%; object-fit: cover; }
+  .thumb-fallback { 
+    display: none; align-items: center; justify-content: center; 
+    height: 100%; color: #999; 
+  }
+  .card-content { padding: 1.25rem; }
+  .kat-badge { font-size: 0.65rem; color: var(--accent); font-weight: 700; }
+</style>

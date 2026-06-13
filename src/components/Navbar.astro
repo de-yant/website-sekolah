@@ -6,7 +6,6 @@ import { sekolah } from "../data/sekolah";
 
 <header id="main-header" class="sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-
     <!-- LOGO -->
     <a href="/" class="nav-logo">
       <img src={import.meta.env.BASE_URL + sekolah.logo} class="w-8 h-8" />
@@ -14,49 +13,112 @@ import { sekolah } from "../data/sekolah";
     </a>
 
     <!-- DESKTOP MENU -->
-    <nav class="hidden md:flex gap-6 text-sm">
-      <a href="/" class="nav-link">Beranda</a>
-      <a href="/profil" class="nav-link">Profil</a>
-      <a href="/visi-misi" class="nav-link">Visi Misi</a>
-      <a href="/jurusan" class="nav-link">Jurusan</a>
-      <a href="/guru" class="nav-link">Guru</a>
-      <a href="/kontak" class="nav-link">Kontak</a>
+    <nav id="desktop-nav">
+      <a href="/" class="nav-link">BERANDA</a>
+
+      <div class="dropdown-wrapper">
+        <button class="nav-link">PROFIL ▾</button>
+        <div class="dropdown-box">
+          <div class="dropdown-inner">
+            <a href="/profil/profil" class="dropdown-item">Profil Sekolah</a>
+            <a href="/profil/sejarah" class="dropdown-item">Sejarah Singkat</a>
+            <a href="/profil/visi-misi" class="dropdown-item"
+              >Visi Misi dan Tujuan</a
+            >
+            <a href="/profil/hymne" class="dropdown-item">Hymne ELDUMA</a>
+            <a href="/profil/arti-logo" class="dropdown-item">Arti Logo</a>
+            <a href="/profil/guru-staff" class="dropdown-item">Guru dan Staff</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown-wrapper">
+        <button class="nav-link">AKADEMIK ▾</button>
+        <div class="dropdown-box">
+          <div class="dropdown-inner">
+            <a href="/akademik/siakad" class="dropdown-item">SIAKAD</a>
+            <a href="/akademik/kurikulum" class="dropdown-item">Kurikulum</a>
+            <a href="/akademik/sekolah-pk" class="dropdown-item">Sekolah PK</a>
+            <a href="/akademik/jurusan" class="dropdown-item">Jurusan</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown-wrapper">
+        <button class="nav-link">KESISWAAN ▾</button>
+        <div class="dropdown-box">
+          <div class="dropdown-inner">
+            <a href="/kesiswaan/osis" class="dropdown-item">OSIS</a>
+            <a href="/kesiswaan/ekskul" class="dropdown-item">Ekskul</a>
+            <a href="/kesiswaan/tata-tertib" class="dropdown-item">Tata Tertib</a>
+            <a href="/kesiswaan/prestasi" class="dropdown-item">Prestasi</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="/sarpras" class="nav-link">SARPRAS</a>
+      <a href="/lulusan" class="nav-link">LULUSAN</a>
+
+      <div class="dropdown-wrapper">
+        <button class="nav-link">INFORMASI ▾</button>
+        <div class="dropdown-box">
+          <div class="dropdown-inner">
+            <a href="/informasi/berita" class="dropdown-item">Berita</a>
+            <a href="/informasi/pengumuman" class="dropdown-item">Pengumuman</a>
+            <a href="/informasi/artikel" class="dropdown-item">Artikel</a>
+            <a href="/informasi/agenda" class="dropdown-item">Agenda</a>
+            <a href="/informasi/galeri" class="dropdown-item">Galeri</a>
+            <a href="/informasi/kontak" class="dropdown-item">Kontak </a>
+          </div>
+        </div>
+      </div>
+
+      <a href="/unduhan" class="nav-link">UNDUHAN</a>
+      <!-- SPMB wajib beda warna harus mencolok -->
+      <a href="/spmb" class="nav-link" style="color: var(--accent)">SPMB</a>
     </nav>
 
-    <!-- HAMBURGER — mobile only -->
-    <button id="openSidebar" class="md:hidden nav-btn" aria-label="Buka menu">
+    <!-- HAMBURGER -->
+    <button id="openSidebar" class="nav-btn" aria-label="Buka menu">
       <Menu size={20} />
     </button>
-
   </div>
 </header>
 
 <!-- SIDEBAR MOBILE -->
-<div id="sidebar" class="fixed inset-0 z-50 hidden md:hidden">
-  <div id="overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
-  <div class="sidebar-panel absolute right-0 top-0 h-full w-72 p-4 flex flex-col">
-    <div class="flex items-center justify-between mb-4">
-      <span style="color: var(--text-primary); font-weight: 600;">Menu</span>
+<div id="sidebar" class="sidebar-overlay">
+  <div id="overlay" class="sidebar-backdrop"></div>
+  <div class="sidebar-panel">
+    <div class="sidebar-header">
+      <span>Menu</span>
       <button id="closeSidebar" class="nav-btn" aria-label="Tutup menu">
         <X size={20} />
       </button>
     </div>
-    <div class="flex-1 overflow-y-auto">
+    <div class="sidebar-content">
       <Sidebar />
     </div>
   </div>
 </div>
 
 <style>
+  /* ── HEADER ── */
   #main-header {
     background: var(--nav-bg);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     border-bottom: 1px solid var(--border-glass);
     box-shadow: var(--glass-shadow);
-    transition: background 0.3s, border-color 0.3s;
+    transition:
+      background 0.3s,
+      border-color 0.3s;
+    position: sticky;
+    top: 0;
+    z-index: 9999; /* ← ganti dari 999 */
   }
 
+  /* ── LOGO ── */
   .nav-logo {
     display: flex;
     align-items: center;
@@ -65,16 +127,104 @@ import { sekolah } from "../data/sekolah";
     font-weight: 700;
     text-decoration: none;
     transition: opacity 0.2s;
+    flex-shrink: 0; /* logo tidak boleh menyempit */
+    white-space: nowrap;
   }
-  .nav-logo:hover { opacity: 0.8; }
+  .nav-logo:hover {
+    opacity: 0.8;
+  }
 
+  /* ── HEADER INNER ── */
+  #main-header > div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* ── DESKTOP NAV ── */
+  #desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.8rem;
+    margin-left: auto; /* ← dorong nav ke kanan */
+  }
+
+  #openSidebar {
+    display: none;
+    margin-left: auto; /* ← hamburger juga ke kanan saat muncul */
+  }
+
+  /* ── NAV LINK ── */
   .nav-link {
     color: var(--text-secondary);
     text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-family: inherit;
+    padding: 0;
     transition: color 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
-  .nav-link:hover { color: var(--accent); }
+  .nav-link:hover {
+    color: var(--accent);
+  }
 
+  /* ── DROPDOWN ── */
+  .dropdown-wrapper {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .dropdown-box {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding-top: 0.5rem;
+    z-index: 9999;
+    min-width: 12rem;
+  }
+
+  .dropdown-wrapper:hover .dropdown-box {
+    display: block;
+  }
+
+  .dropdown-box::after {
+    content: "";
+  }
+
+  .dropdown-inner {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    box-shadow: var(--glass-shadow);
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdown-item {
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition:
+      background 0.2s,
+      color 0.2s;
+    white-space: nowrap;
+  }
+  .dropdown-item:hover {
+    background: var(--bg-surface);
+    color: var(--accent);
+  }
+
+  /* ── NAV BTN ── */
   .nav-btn {
     display: flex;
     align-items: center;
@@ -86,17 +236,60 @@ import { sekolah } from "../data/sekolah";
     background: var(--bg-glass);
     color: var(--text-secondary);
     cursor: pointer;
-    transition: background 0.2s, color 0.2s;
+    flex-shrink: 0;
+    transition:
+      background 0.2s,
+      color 0.2s;
   }
   .nav-btn:hover {
     background: var(--bg-surface);
     color: var(--accent);
   }
 
+  /* ── SIDEBAR ── */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+  }
+  .sidebar-overlay.open {
+    display: block;
+  }
+
+  .sidebar-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+  }
+
   .sidebar-panel {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 18rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
     background: var(--bg-primary);
     border-left: 1px solid var(--border-color);
     box-shadow: -8px 0 32px rgba(0, 0, 0, 0.15);
+  }
+
+  .sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .sidebar-content {
+    flex: 1;
+    overflow-y: auto;
   }
 </style>
 
@@ -105,11 +298,39 @@ import { sekolah } from "../data/sekolah";
   const openBtn = document.getElementById("openSidebar");
   const closeBtn = document.getElementById("closeSidebar");
   const overlay = document.getElementById("overlay");
+  const nav = document.getElementById("desktop-nav");
+  const logo = document.querySelector(".nav-logo");
+  const header = document.getElementById("main-header");
 
-  openBtn?.addEventListener("click", () => sidebar?.classList.remove("hidden"));
-  closeBtn?.addEventListener("click", () => sidebar?.classList.add("hidden"));
-  overlay?.addEventListener("click", () => sidebar?.classList.add("hidden"));
+  function checkCollision() {
+    // Paksa nav visible sementara untuk ukur lebar aslinya
+    nav.style.display = "flex";
+    openBtn.style.display = "none";
+
+    const headerWidth = header.offsetWidth;
+    const logoWidth = logo.offsetWidth;
+    const navWidth = nav.scrollWidth;
+    const padding = 48; // px-6 kiri + kanan
+    const gap = 24; // jarak aman
+
+    const available = headerWidth - logoWidth - padding - gap;
+
+    if (navWidth > available) {
+      nav.style.display = "none";
+      openBtn.style.display = "flex";
+    } else {
+      nav.style.display = "flex";
+      openBtn.style.display = "none";
+    }
+  }
+
+  const ro = new ResizeObserver(checkCollision);
+  ro.observe(header);
+
+  openBtn?.addEventListener("click", () => sidebar?.classList.add("open"));
+  closeBtn?.addEventListener("click", () => sidebar?.classList.remove("open"));
+  overlay?.addEventListener("click", () => sidebar?.classList.remove("open"));
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") sidebar?.classList.add("hidden");
+    if (e.key === "Escape") sidebar?.classList.remove("open");
   });
 </script>

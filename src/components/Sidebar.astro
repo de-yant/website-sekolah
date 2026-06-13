@@ -1,14 +1,188 @@
-<aside class="w-64 bg-white rounded-xl shadow p-4">
+<nav class="sidebar-nav">
 
-  <h3 class="font-bold mb-4">
-    Menu
-  </h3>
+  <a href="/" class="s-link">Beranda</a>
 
-  <ul class="space-y-2">
-    <li><a href="/berita">Berita</a></li>
-    <li><a href="/pengumuman">Pengumuman</a></li>
-    <li><a href="/galeri">Galeri</a></li>
-    <li><a href="/prestasi">Prestasi</a></li>
-  </ul>
+  <!-- PROFIL -->
+  <div class="s-group">
+    <button class="s-group-btn" onclick="toggleGroup(this)">
+      Profil <span class="s-chevron">▾</span>
+    </button>
+    <div class="s-group-items">
+      <a href="/profil/sejarah" class="s-item">Sejarah Singkat</a>
+      <a href="/profil/visi-misi" class="s-item">Visi Misi dan Tujuan</a>
+      <a href="/profil/hymne" class="s-item">Hymne ELDUMA</a>
+      <a href="/profil/arti-logo" class="s-item">Arti Logo</a>
+      <a href="/profil/guru-staff" class="s-item">Guru dan Staff</a>
+    </div>
+  </div>
 
-</aside>
+  <!-- AKADEMIK -->
+  <div class="s-group">
+    <button class="s-group-btn" onclick="toggleGroup(this)">
+      Akademik <span class="s-chevron">▾</span>
+    </button>
+    <div class="s-group-items">
+      <a href="/akademik/siakad" class="s-item">SIAKAD</a>
+      <a href="/akademik/kurikulum" class="s-item">Kurikulum</a>
+      <a href="/akademik/sekolah-pk" class="s-item">Sekolah PK</a>
+    </div>
+  </div>
+
+  <!-- KESISWAAN -->
+  <div class="s-group">
+    <button class="s-group-btn" onclick="toggleGroup(this)">
+      Kesiswaan <span class="s-chevron">▾</span>
+    </button>
+    <div class="s-group-items">
+      <a href="/osis" class="s-item">OSIS</a>
+      <a href="/ekskul" class="s-item">Ekskul</a>
+      <a href="/tata-tertib" class="s-item">Tata Tertib</a>
+      <a href="/prestasi" class="s-item">Prestasi</a>
+    </div>
+  </div>
+
+  <a href="/sarpras" class="s-link">Sarpras</a>
+  <a href="/lulusan" class="s-link">Lulusan</a>
+
+  <!-- INFORMASI -->
+  <div class="s-group">
+    <button class="s-group-btn" onclick="toggleGroup(this)">
+      Informasi <span class="s-chevron">▾</span>
+    </button>
+    <div class="s-group-items">
+      <a href="/berita" class="s-item">Berita</a>
+      <a href="/pengumuman" class="s-item">Pengumuman</a>
+      <a href="/artikel" class="s-item">Artikel</a>
+    </div>
+  </div>
+
+  <a href="/unduhan" class="s-link">Unduhan</a>
+
+  <!-- SPMB — mencolok -->
+  <a href="/spmb" class="s-link s-spmb">SPMB</a>
+
+</nav>
+
+<style>
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  /* Link langsung (tanpa submenu) */
+  .s-link {
+    display: block;
+    padding: 0.6rem 0.75rem;
+    border-radius: 0.6rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .s-link:hover {
+    background: var(--bg-surface);
+    color: var(--accent);
+  }
+
+  /* SPMB mencolok */
+  .s-spmb {
+    color: var(--accent);
+    font-weight: 700;
+    border: 1px solid var(--accent);
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+  .s-spmb:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  /* Group dengan submenu */
+  .s-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .s-group-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border-radius: 0.6rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
+    transition: background 0.2s, color 0.2s;
+  }
+  .s-group-btn:hover {
+    background: var(--bg-surface);
+    color: var(--accent);
+  }
+  .s-group-btn.open {
+    color: var(--accent);
+  }
+
+  .s-chevron {
+    font-size: 0.7rem;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .s-group-btn.open .s-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Submenu items */
+  .s-group-items {
+    display: none;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding-left: 0.75rem;
+    margin-top: 0.1rem;
+  }
+  .s-group-items.open {
+    display: flex;
+  }
+
+  .s-item {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.825rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-left: 2px solid var(--border-color);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .s-item:hover {
+    background: var(--bg-surface);
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+</style>
+
+<script is:inline>
+  function toggleGroup(btn) {
+    const items = btn.nextElementSibling;
+    const isOpen = items.classList.contains("open");
+
+    // Tutup semua group lain
+    document.querySelectorAll(".s-group-items.open").forEach((el) => {
+      el.classList.remove("open");
+      el.previousElementSibling.classList.remove("open");
+    });
+
+    // Buka yang diklik (kalau belum open)
+    if (!isOpen) {
+      items.classList.add("open");
+      btn.classList.add("open");
+    }
+  }
+</script>
