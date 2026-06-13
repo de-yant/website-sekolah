@@ -123,8 +123,12 @@ const linkTerkait = [
       }
     </div>
 
-    <button class="slider-prev" id="slider-prev" aria-label="Sebelumnya">&#8249;</button>
-    <button class="slider-next" id="slider-next" aria-label="Berikutnya">&#8250;</button>
+    <button class="slider-prev" id="slider-prev" aria-label="Sebelumnya"
+      >&#8249;</button
+    >
+    <button class="slider-next" id="slider-next" aria-label="Berikutnya"
+      >&#8250;</button
+    >
 
     <div class="slider-dots" id="slider-dots">
       {
@@ -147,7 +151,15 @@ const linkTerkait = [
       <div class="sambutan-grid">
         <div class="sambutan-foto-col">
           <div class="foto-placeholder large">
-            <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="56"
+              height="56"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.2"
+            >
               <circle cx="12" cy="8" r="4"></circle>
               <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path>
             </svg>
@@ -165,15 +177,15 @@ const linkTerkait = [
             <p>Assalamu'alaikum Warahmatullahi Wabarakatuh,</p>
             <p>
               Puji syukur kehadirat Allah SWT atas segala limpahan rahmat dan
-              karunia-Nya sehingga SMK 2 LPPM RI Majalaya terus berkembang menjadi
-              lembaga pendidikan vokasi yang unggul dan terpercaya di Kabupaten
-              Bandung.
+              karunia-Nya sehingga SMK 2 LPPM RI Majalaya terus berkembang
+              menjadi lembaga pendidikan vokasi yang unggul dan terpercaya di
+              Kabupaten Bandung.
             </p>
             <p>
               Kami berkomitmen untuk terus meningkatkan kualitas pendidikan
-              kejuruan yang tidak hanya berfokus pada keterampilan teknis, tetapi
-              juga pada pembentukan karakter dan akhlak mulia setiap peserta
-              didik.
+              kejuruan yang tidak hanya berfokus pada keterampilan teknis,
+              tetapi juga pada pembentukan karakter dan akhlak mulia setiap
+              peserta didik.
             </p>
             <p>Wassalamu'alaikum Warahmatullahi Wabarakatuh.</p>
           </div>
@@ -201,7 +213,15 @@ const linkTerkait = [
           struktural.map((p) => (
             <div class="card struktural-card">
               <div class="foto-placeholder small">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
                   <circle cx="12" cy="8" r="4" />
                   <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
                 </svg>
@@ -221,7 +241,9 @@ const linkTerkait = [
   <section class="statistik-section">
     <div class="section-inner">
       <div class="section-eyebrow text-center statistik-eyebrow">Statistik</div>
-      <h2 class="section-heading text-center statistik-heading">Data Sekolah</h2>
+      <h2 class="section-heading text-center statistik-heading">
+        Data Sekolah
+      </h2>
       <div class="statistik-grid">
         {
           statistik.map((s) => (
@@ -252,7 +274,15 @@ const linkTerkait = [
             <a href="/berita" class="card berita-card">
               <div class="berita-thumb">
                 <div class="berita-thumb-placeholder">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="28"
+                    height="28"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
                     <rect x="3" y="3" width="18" height="18" rx="2" />
                     <path d="M3 9h18M9 21V9" />
                   </svg>
@@ -311,7 +341,12 @@ const linkTerkait = [
       <div class="link-grid">
         {
           linkTerkait.map((l) => (
-            <a href={l.url} target="_blank" rel="noopener noreferrer" class="card link-card">
+            <a
+              href={l.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="card link-card"
+            >
               <span class="link-ikon">{l.ikon}</span>
               <span class="link-nama">{l.nama}</span>
               <span class="link-arrow">→</span>
@@ -325,69 +360,86 @@ const linkTerkait = [
 
 <style>
   /* ══════════════════════════════════════════════════
-     DESIGN TOKENS — Light & Dark
+     BOX SIZING GLOBAL
   ══════════════════════════════════════════════════ */
-
-  /* Light mode: page bg = abu-abu lembut, card = putih */
-  :root {
-    --page-bg:        #f0f2f5;        /* abu-abu lembut untuk body */
-    --card-bg:        #ffffff;        /* putih untuk card */
-    --card-border:    rgba(0,0,0,0.07);
-    --card-shadow:    0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.05);
-
-    --section-alt-bg: #e8eaed;        /* section alternating (lebih gelap sedikit) */
-    --text-primary:   #0f172a;
-    --text-secondary: #475569;
-    --text-muted:     #94a3b8;
-    --accent:         #0ea5e9;
-    --accent-hover:   #0284c7;
-    --border-color:   #e2e8f0;
-    --border-glass:   rgba(0,0,0,0.06);
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
 
-  /* Dark mode: page bg = gelap, card = lebih terang */
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --page-bg:        #0d1117;        /* sangat gelap untuk body */
-      --card-bg:        #161b22;        /* card sedikit lebih terang */
-      --card-border:    rgba(255,255,255,0.08);
-      --card-shadow:    0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+  /* ══════════════════════════════════════════════════
+     DESIGN TOKENS — Light & Dark
+  ══════════════════════════════════════════════════ */
+  :root {
+    --page-bg: #f0f2f5;
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.07);
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.05);
+    --section-alt-bg: #e8eaed;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    --accent: #0ea5e9;
+    --accent-hover: #0284c7;
+    --border-color: #e2e8f0;
+    --border-glass: rgba(0, 0, 0, 0.06);
 
-      --section-alt-bg: #111318;        /* section alternating (lebih gelap dari card) */
-      --text-primary:   #e2e8f0;
-      --text-secondary: #94a3b8;
-      --text-muted:     #64748b;
-      --accent:         #38bdf8;
-      --accent-hover:   #7dd3fc;
-      --border-color:   rgba(255,255,255,0.08);
-      --border-glass:   rgba(255,255,255,0.06);
+    --section-mx: 0.2rem; /* margin kiri & kanan (tadinya 0.4rem) */
+    --section-px: 0.75rem; /* padding dalam section kiri & kanan (tadinya 1rem) */
+    --section-py: 1.25rem; /* padding dalam section atas & bawah (tadinya 2rem) */
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --section-mx: 0.5rem; /* desktop (tadinya 1rem) */
+      --section-px: 1.25rem; /* desktop (tadinya 2rem) */
+      --section-py: 2rem; /* desktop (tadinya 3.5rem) */
     }
   }
 
-  /* Jika layout menggunakan class dark secara manual */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --page-bg: #0d1117;
+      --card-bg: #161b22;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+      --section-alt-bg: #111318;
+      --text-primary: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-glass: rgba(255, 255, 255, 0.06);
+    }
+  }
+
   [data-theme="dark"] {
-    --page-bg:        #162032;
-    --card-bg:        #ffffff;
-    --card-border:    rgba(255,255,255,0.08);
-    --card-shadow:    0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+    --page-bg: #162032;
+    --card-bg: #1e2a3a;
+    --card-border: rgba(255, 255, 255, 0.08);
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
     --section-alt-bg: #111318;
-    --text-primary:   #e2e8f0;
+    --text-primary: #e2e8f0;
     --text-secondary: #94a3b8;
-    --text-muted:     #64748b;
-    --accent:         #38bdf8;
-    --accent-hover:   #7dd3fc;
-    --border-color:   rgba(255,255,255,0.08);
-    --border-glass:   rgba(255, 255, 255, 0.641);
+    --text-muted: #64748b;
+    --accent: #38bdf8;
+    --accent-hover: #7dd3fc;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-glass: rgba(255, 255, 255, 0.1);
   }
 
   /* ── CARD BASE ── */
-  /* Semua elemen yang pakai class .card mendapat style card */
   .card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     box-shadow: var(--card-shadow);
     border-radius: 1.25rem;
-    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    transition:
+      border-color 0.2s,
+      transform 0.2s,
+      box-shadow 0.2s;
   }
   .card:hover {
     border-color: var(--accent);
@@ -396,31 +448,32 @@ const linkTerkait = [
 
   /* ── GLOBAL SECTION ── */
   .section {
-    padding: 3.5rem 2rem;
+    padding: var(--section-py) var(--section-px);
     background: var(--card-bg);
-    border-radius: 1.75rem;
+    border-radius: 1.25rem;
     border: 1px solid var(--card-border);
     box-shadow: var(--card-shadow);
-    margin: 0 1rem 1.25rem;
+    margin: 0 var(--section-mx) 1rem;
+    /* Pastikan tidak overflow */
+    overflow: hidden;
+    /* Lebar tidak melebihi viewport */
+    max-width: calc(100vw - (var(--section-mx) * 2));
   }
 
-  /* Section dengan background alternatif */
   .struktural-section,
   .berita-section,
-  .prestasi-section {
+  .prestasi-section,
+  .link-section {
     background: var(--section-alt-bg);
     border-color: var(--border-color);
   }
 
-  /* Hapus border yang bertabrakan dengan rounded section */
-  .sambutan-section { border-bottom: none; }
-  .berita-section   { border-bottom: none; }
-  .link-section     { border-top: none; }
-
   .section-inner {
     max-width: 1100px;
     margin: 0 auto;
+    width: 100%;
   }
+
   .section-eyebrow {
     font-size: 0.7rem;
     font-weight: 700;
@@ -430,32 +483,16 @@ const linkTerkait = [
     margin-bottom: 0.5rem;
   }
   .section-heading {
-    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-size: clamp(1.3rem, 2.5vw, 2rem);
     font-weight: 800;
     color: var(--text-primary);
-    margin-bottom: 2rem;
+    margin-bottom: 1.75rem;
     line-height: 1.2;
   }
-  .text-center { text-align: center; }
-  .section-header-row {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: 1.5rem;
-    gap: 1rem;
-    flex-wrap: wrap;
+  .text-center {
+    text-align: center;
   }
-  .section-header-row .section-heading { margin-bottom: 0; }
-  .link-semua {
-    font-size: 0.85rem;
-    color: var(--accent);
-    text-decoration: none;
-    white-space: nowrap;
-    padding-bottom: 0.25rem;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.2s;
-  }
-  .link-semua:hover { border-color: var(--accent); }
+
   .section-header-center {
     text-align: center;
     margin-bottom: 1.75rem;
@@ -463,20 +500,20 @@ const linkTerkait = [
   .section-header-center .section-heading {
     margin-bottom: 0.75rem;
   }
-  .link-semua-center {
-    display: inline-block;
-  }
+
   .btn-outline {
     display: inline-block;
     margin-top: 0.5rem;
-    padding: 0.55rem 1.75rem;
+    padding: 0.55rem 1.5rem;
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--accent);
     border: 1.5px solid var(--accent);
     border-radius: 999px;
     text-decoration: none;
-    transition: background 0.2s, color 0.2s;
+    transition:
+      background 0.2s,
+      color 0.2s;
   }
   .btn-outline:hover {
     background: var(--accent);
@@ -493,18 +530,18 @@ const linkTerkait = [
     align-items: center;
     justify-content: center;
     color: var(--text-muted);
+    flex-shrink: 0;
   }
   .foto-placeholder.large {
     width: 100%;
     aspect-ratio: 3/4;
-    max-width: 260px;
+    max-width: 220px;
     margin: 0 auto;
   }
   .foto-placeholder.small {
-    width: 72px;
-    height: 72px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
-    flex-shrink: 0;
     background: var(--page-bg);
   }
 
@@ -514,9 +551,19 @@ const linkTerkait = [
   .slider-section {
     position: relative;
     overflow: hidden;
-    height: 520px;
-    margin-bottom: 1.25rem;
+    height: 480px;
+    margin: 0 var(--section-mx) 1rem;
+    border-radius: 1.25rem;
   }
+
+  @media (max-width: 480px) {
+    .slider-section {
+      height: 400px;
+      margin: 0 var(--section-mx) 1rem;
+      border-radius: 1rem;
+    }
+  }
+
   .slider-track {
     display: flex;
     height: 100%;
@@ -529,71 +576,95 @@ const linkTerkait = [
     display: flex;
     align-items: center;
   }
-  .slide-1 { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); }
-  .slide-2 { background: linear-gradient(135deg, #0f2a1a 0%, #0f4e2a 100%); }
-  .slide-3 { background: linear-gradient(135deg, #1a0f2a 0%, #3a1a5f 100%); }
+  .slide-1 {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+  }
+  .slide-2 {
+    background: linear-gradient(135deg, #0f2a1a 0%, #0f4e2a 100%);
+  }
+  .slide-3 {
+    background: linear-gradient(135deg, #1a0f2a 0%, #3a1a5f 100%);
+  }
   .slide-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.35);
+    background: rgba(0, 0, 0, 0.35);
   }
   .slide-content {
     position: relative;
     z-index: 1;
-    padding: 2rem 3rem;
+    padding: 1.5rem;
+    width: 100%;
     max-width: 700px;
     margin: 0 auto;
   }
+
+  @media (min-width: 768px) {
+    .slide-content {
+      padding: 2rem 3rem;
+    }
+  }
+
   .slide-badge {
     display: inline-block;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #38bdf8;
     border: 1px solid #38bdf8;
     border-radius: 999px;
-    padding: 0.25rem 0.75rem;
-    margin-bottom: 1.25rem;
-  }
-  .slide-title {
-    font-size: clamp(1.6rem, 4vw, 2.75rem);
-    font-weight: 800;
-    color: #f1f5f9;
-    line-height: 1.2;
+    padding: 0.2rem 0.65rem;
     margin-bottom: 1rem;
   }
+  .slide-title {
+    font-size: clamp(1.25rem, 4vw, 2.75rem);
+    font-weight: 800;
+    color: #f1f5f9;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+  }
   .slide-sub {
-    font-size: 1rem;
+    font-size: clamp(0.85rem, 2vw, 1rem);
     color: #94a3b8;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     line-height: 1.6;
   }
-  .slide-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .slide-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
   .btn-primary {
     display: inline-block;
-    padding: 0.65rem 1.5rem;
+    padding: 0.6rem 1.25rem;
     background: #0ea5e9;
     color: #fff;
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     font-weight: 600;
     border-radius: 0.6rem;
     text-decoration: none;
     transition: background 0.2s;
+    white-space: nowrap;
   }
-  .btn-primary:hover { background: #0284c7; }
+  .btn-primary:hover {
+    background: #0284c7;
+  }
   .btn-ghost {
     display: inline-block;
-    padding: 0.65rem 1.5rem;
+    padding: 0.6rem 1.25rem;
     color: #f1f5f9;
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     font-weight: 600;
     border-radius: 0.6rem;
-    border: 1px solid rgba(241,245,249,0.3);
+    border: 1px solid rgba(241, 245, 249, 0.3);
     text-decoration: none;
     transition: background 0.2s;
+    white-space: nowrap;
   }
-  .btn-ghost:hover { background: rgba(241,245,249,0.1); }
+  .btn-ghost:hover {
+    background: rgba(241, 245, 249, 0.1);
+  }
 
   .slider-prev,
   .slider-next {
@@ -601,27 +672,35 @@ const linkTerkait = [
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fff;
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: background 0.2s;
     line-height: 1;
+    padding: 0;
   }
-  .slider-prev { left: 1.25rem; }
-  .slider-next { right: 1.25rem; }
+  .slider-prev {
+    left: 0.75rem;
+  }
+  .slider-next {
+    right: 0.75rem;
+  }
   .slider-prev:hover,
-  .slider-next:hover { background: rgba(255,255,255,0.28); }
+  .slider-next:hover {
+    background: rgba(255, 255, 255, 0.28);
+  }
+
   .slider-dots {
     position: absolute;
-    bottom: 1.25rem;
+    bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -632,44 +711,60 @@ const linkTerkait = [
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.35);
+    background: rgba(255, 255, 255, 0.35);
     border: none;
     cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
+    transition:
+      background 0.2s,
+      transform 0.2s;
+    padding: 0;
   }
-  .dot.active { background: #38bdf8; transform: scale(1.3); }
+  .dot.active {
+    background: #38bdf8;
+    transform: scale(1.3);
+  }
 
   /* ══════════════════════════
      2. SAMBUTAN
   ══════════════════════════ */
-  .sambutan-section {
-    border-bottom: 1px solid var(--border-color);
-  }
   .sambutan-grid {
     display: grid;
-    grid-template-columns: 260px 1fr;
-    gap: 3rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
     align-items: start;
   }
-  @media (max-width: 720px) {
-    .sambutan-grid { grid-template-columns: 1fr; }
-    .foto-placeholder.large { max-width: 200px; }
+
+  @media (min-width: 720px) {
+    .sambutan-grid {
+      grid-template-columns: 220px 1fr;
+      gap: 3rem;
+    }
   }
+
   .sambutan-foto-col {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
   }
-  .ks-identity { text-align: center; }
+  .ks-identity {
+    text-align: center;
+  }
   .ks-nama {
     font-weight: 700;
     font-size: 0.9rem;
     color: var(--text-primary);
     margin-bottom: 0.2rem;
   }
-  .ks-jabatan { font-size: 0.78rem; color: var(--accent); font-weight: 600; }
-  .ks-sekolah { font-size: 0.78rem; color: var(--text-muted); }
+  .ks-jabatan {
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .ks-sekolah {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
   .sambutan-body {
     display: flex;
     flex-direction: column;
@@ -679,11 +774,30 @@ const linkTerkait = [
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
   }
-  .ttd { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.8; text-align: right; margin-left: auto; }
-  .ttd-label { margin-bottom: 2rem; }
-  .ttd-line { width: 160px; border-top: 1px solid var(--border-color); margin-bottom: 0.5rem; margin-left: auto; }
-  .ttd-nama { font-weight: 700; color: var(--text-primary); }
-  .ttd-nip { color: var(--text-muted); font-size: 0.8rem; }
+  .ttd {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    text-align: right;
+    margin-left: auto;
+  }
+  .ttd-label {
+    margin-bottom: 2rem;
+  }
+  .ttd-line {
+    width: 160px;
+    border-top: 1px solid var(--border-color);
+    margin-bottom: 0.5rem;
+    margin-left: auto;
+  }
+  .ttd-nama {
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .ttd-nip {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
 
   /* ══════════════════════════
      3. STRUKTURAL
@@ -692,22 +806,44 @@ const linkTerkait = [
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.65rem;
   }
+
   .struktural-card {
-    width: calc(25% - 0.75rem);
-    padding: 1.5rem 1rem;
+    /* Mobile: 1 kolom penuh */
+    width: 100%;
+    padding: 1.25rem 0.75rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.6rem;
     text-align: center;
   }
-  @media (max-width: 720px) {
-    .struktural-card { width: calc(50% - 0.5rem); }
+
+  @media (min-width: 480px) {
+    .struktural-card {
+      /* Tablet kecil: 2 kolom */
+      width: calc(50% - 0.35rem);
+    }
   }
-  .struktural-nama { font-size: 0.8rem; font-weight: 600; color: var(--text-primary); line-height: 1.4; }
-  .struktural-jabatan { font-size: 0.73rem; color: var(--accent); font-weight: 500; }
+
+  @media (min-width: 900px) {
+    .struktural-card {
+      /* Desktop: 4 per baris, sisanya center otomatis */
+      width: calc(25% - 0.5rem);
+    }
+  }
+  .struktural-nama {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+  .struktural-jabatan {
+    font-size: 0.7rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
 
   /* ══════════════════════════
      4. STATISTIK
@@ -716,63 +852,110 @@ const linkTerkait = [
     background: var(--section-alt-bg);
     border: 1px solid var(--card-border);
     box-shadow: var(--card-shadow);
-    padding: 3rem 2rem;
-    border-radius: 1.75rem;
-    margin: 0 1rem 1.25rem;
+    padding: var(--section-py) var(--section-px);
+    border-radius: 1.25rem;
+    margin: 0 var(--section-mx) 1rem;
     overflow: hidden;
+    max-width: calc(100vw - (var(--section-mx) * 2));
   }
   .statistik-eyebrow {
     margin-bottom: 0.35rem;
   }
   .statistik-heading {
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.5rem;
   }
+
   .statistik-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
     max-width: 1100px;
     margin: 0 auto;
   }
+
+  @media (min-width: 400px) {
+    .statistik-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 640px) {
+    .statistik-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
   .statistik-card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     box-shadow: var(--card-shadow);
-    border-radius: 1.25rem;
-    padding: 2rem 1.5rem;
+    border-radius: 1rem;
+    padding: 1.5rem 1rem;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    transition: border-color 0.2s, transform 0.2s;
+    gap: 0.4rem;
+    transition:
+      border-color 0.2s,
+      transform 0.2s;
   }
-  .statistik-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .statistik-ikon { font-size: 2rem; }
-  .statistik-nilai { font-size: 2.25rem; font-weight: 800; color: var(--text-primary); line-height: 1; }
-  .statistik-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+  .statistik-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .statistik-ikon {
+    font-size: 1.75rem;
+  }
+  .statistik-nilai {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1;
+  }
+  .statistik-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
 
   /* ══════════════════════════
      5. BERITA
   ══════════════════════════ */
-  .berita-section {
-    border-bottom: 1px solid var(--border-color);
-  }
   .berita-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.25rem;
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
   }
+
+  @media (min-width: 560px) {
+    .berita-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 900px) {
+    .berita-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
   .berita-card {
     text-decoration: none;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    transition:
+      border-color 0.2s,
+      transform 0.2s,
+      box-shadow 0.2s;
   }
-  .berita-card:hover { transform: translateY(-3px); }
+  .berita-card:hover {
+    transform: translateY(-3px);
+  }
   .berita-thumb {
     aspect-ratio: 16/9;
-    background: var(--section-alt-bg);
+    background: var(--page-bg);
     border-bottom: 1px solid var(--card-border);
     display: flex;
     align-items: center;
@@ -789,92 +972,161 @@ const linkTerkait = [
   }
   .berita-kategori {
     position: absolute;
-    top: 0.75rem;
-    left: 0.75rem;
+    top: 0.6rem;
+    left: 0.6rem;
     background: var(--accent);
     color: #fff;
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.05em;
-    padding: 0.2rem 0.6rem;
+    padding: 0.2rem 0.55rem;
     border-radius: 999px;
   }
   .berita-body {
-    padding: 1rem;
+    padding: 0.875rem;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.35rem;
     flex: 1;
   }
-  .berita-tanggal { font-size: 0.75rem; color: var(--text-muted); }
-  .berita-judul { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); line-height: 1.5; }
+  .berita-tanggal {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+  .berita-judul {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.5;
+  }
 
   /* ══════════════════════════
      6. PRESTASI
   ══════════════════════════ */
-  .prestasi-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .prestasi-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
   .prestasi-item {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.25rem;
+    gap: 0.875rem;
+    padding: 0.875rem 1rem;
+    flex-wrap: nowrap;
   }
   .prestasi-rank {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     background: var(--accent);
     color: #fff;
     font-weight: 800;
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
   }
-  .prestasi-info { flex: 1; }
-  .prestasi-nama { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.2rem; }
-  .prestasi-meta { font-size: 0.78rem; color: var(--text-muted); }
-  .prestasi-badge {
-    font-size: 0.72rem;
-    font-weight: 700;
-    padding: 0.25rem 0.75rem;
-    border-radius: 999px;
+  .prestasi-info {
+    flex: 1;
+    min-width: 0;
+  }
+  .prestasi-nama {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.15rem;
+    line-height: 1.35;
+    word-break: break-word;
+  }
+  @media (max-width: 480px) {
+    .prestasi-nama {
+      font-size: 0.8rem;
+    }
+  }
+  .prestasi-meta {
+    font-size: 0.73rem;
+    color: var(--text-muted);
     white-space: nowrap;
   }
+  .prestasi-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    align-self: center;
+  }
   .level-provinsi {
-    background: rgba(14,165,233,0.12);
+    background: rgba(14, 165, 233, 0.12);
     color: var(--accent);
-    border: 1px solid rgba(14,165,233,0.25);
+    border: 1px solid rgba(14, 165, 233, 0.25);
   }
   .level-kabupaten {
-    background: rgba(16,185,129,0.12);
+    background: rgba(16, 185, 129, 0.12);
     color: #059669;
-    border: 1px solid rgba(16,185,129,0.25);
+    border: 1px solid rgba(16, 185, 129, 0.25);
   }
 
   /* ══════════════════════════
      7. LINK TERKAIT
   ══════════════════════════ */
-  .link-section {
-    border-top: 1px solid var(--border-color);
-  }
   .link-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 0.75rem;
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
   }
+
+  @media (min-width: 480px) {
+    .link-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 720px) {
+    .link-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 900px) {
+    .link-grid {
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+  }
+
   .link-card {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.875rem 1rem;
+    gap: 0.65rem;
+    padding: 0.8rem 0.875rem;
     text-decoration: none;
+    min-width: 0;
   }
-  .link-card:hover { transform: translateX(3px); }
-  .link-ikon { font-size: 1.25rem; flex-shrink: 0; }
-  .link-nama { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); flex: 1; }
-  .link-arrow { font-size: 0.85rem; color: var(--text-muted); }
+  .link-card:hover {
+    transform: translateX(3px);
+  }
+  .link-ikon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .link-nama {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .link-arrow {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
 </style>
 
 <script is:inline>
@@ -890,17 +1142,32 @@ const linkTerkait = [
     dots.forEach((d, i) => d.classList.toggle("active", i === current));
   }
 
-  function next() { goTo(current + 1); }
-  function prev() { goTo(current - 1); }
+  function next() {
+    goTo(current + 1);
+  }
+  function prev() {
+    goTo(current - 1);
+  }
 
   function startTimer() {
     clearInterval(timer);
     timer = setInterval(next, 5000);
   }
 
-  document.getElementById("slider-next")?.addEventListener("click", () => { next(); startTimer(); });
-  document.getElementById("slider-prev")?.addEventListener("click", () => { prev(); startTimer(); });
-  dots.forEach((d) => d.addEventListener("click", () => { goTo(+d.dataset.index); startTimer(); }));
+  document.getElementById("slider-next")?.addEventListener("click", () => {
+    next();
+    startTimer();
+  });
+  document.getElementById("slider-prev")?.addEventListener("click", () => {
+    prev();
+    startTimer();
+  });
+  dots.forEach((d) =>
+    d.addEventListener("click", () => {
+      goTo(+d.dataset.index);
+      startTimer();
+    }),
+  );
 
   startTimer();
 </script>

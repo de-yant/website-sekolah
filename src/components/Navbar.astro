@@ -51,7 +51,9 @@ import { sekolah } from "../data/sekolah";
           <div class="dropdown-inner">
             <a href="/kesiswaan/osis" class="dropdown-item">OSIS</a>
             <a href="/kesiswaan/ekskul" class="dropdown-item">Ekskul</a>
-            <a href="/kesiswaan/tata-tertib" class="dropdown-item">Tata Tertib</a>
+            <a href="/kesiswaan/tata-tertib" class="dropdown-item"
+              >Tata Tertib</a
+            >
             <a href="/kesiswaan/prestasi" class="dropdown-item">Prestasi</a>
           </div>
         </div>
@@ -69,13 +71,12 @@ import { sekolah } from "../data/sekolah";
             <a href="/informasi/artikel" class="dropdown-item">Artikel</a>
             <a href="/informasi/agenda" class="dropdown-item">Agenda</a>
             <a href="/informasi/galeri" class="dropdown-item">Galeri</a>
-            <a href="/informasi/kontak" class="dropdown-item">Kontak </a>
+            <a href="/informasi/kontak" class="dropdown-item">Kontak</a>
           </div>
         </div>
       </div>
 
       <a href="/unduhan" class="nav-link">UNDUHAN</a>
-      <!-- SPMB wajib beda warna harus mencolok -->
       <a href="/spmb" class="nav-link" style="color: var(--accent)">SPMB</a>
     </nav>
 
@@ -115,7 +116,7 @@ import { sekolah } from "../data/sekolah";
       border-color 0.3s;
     position: sticky;
     top: 0;
-    z-index: 9999; /* ← ganti dari 999 */
+    z-index: 9999;
   }
 
   /* ── LOGO ── */
@@ -127,7 +128,7 @@ import { sekolah } from "../data/sekolah";
     font-weight: 700;
     text-decoration: none;
     transition: opacity 0.2s;
-    flex-shrink: 0; /* logo tidak boleh menyempit */
+    flex-shrink: 0;
     white-space: nowrap;
   }
   .nav-logo:hover {
@@ -147,12 +148,12 @@ import { sekolah } from "../data/sekolah";
     align-items: center;
     gap: 1rem;
     font-size: 0.8rem;
-    margin-left: auto; /* ← dorong nav ke kanan */
+    margin-left: auto;
   }
 
   #openSidebar {
     display: none;
-    margin-left: auto; /* ← hamburger juga ke kanan saat muncul */
+    margin-left: auto;
   }
 
   /* ── NAV LINK ── */
@@ -193,13 +194,10 @@ import { sekolah } from "../data/sekolah";
     display: block;
   }
 
-  .dropdown-box::after {
-    content: "";
-  }
-
   .dropdown-inner {
     background: var(--bg-primary);
-    border: 1px solid var(--border-color);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-glass);
     border-radius: 0.75rem;
     box-shadow: var(--glass-shadow);
     padding: 0.5rem;
@@ -220,7 +218,7 @@ import { sekolah } from "../data/sekolah";
     white-space: nowrap;
   }
   .dropdown-item:hover {
-    background: var(--bg-surface);
+    background: rgba(14, 165, 233, 0.08);
     color: var(--accent);
   }
 
@@ -242,54 +240,66 @@ import { sekolah } from "../data/sekolah";
       color 0.2s;
   }
   .nav-btn:hover {
-    background: var(--bg-surface);
+    background: rgba(14, 165, 233, 0.08);
     color: var(--accent);
   }
 
-  /* ── SIDEBAR ── */
+  /* ── SIDEBAR OVERLAY ── */
   .sidebar-overlay {
     display: none;
     position: fixed;
     inset: 0;
-    z-index: 100;
+    z-index: 9998;
   }
   .sidebar-overlay.open {
     display: block;
   }
 
+  /* ── BACKDROP ── */
   .sidebar-backdrop {
-    position: absolute;
+    position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5);
+    top: 4rem;
+    background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
   }
 
+  /* ── PANEL — sama persis dengan navbar ── */
   .sidebar-panel {
-    position: absolute;
+    position: fixed;
     right: 0;
-    top: 0;
-    height: 100%;
+    top: 4rem;
+    height: calc(100% - 4rem);
     width: 18rem;
     padding: 1rem;
     display: flex;
     flex-direction: column;
+
+    /* Sama persis dengan --nav-bg tapi solid, bukan transparan */
     background: var(--bg-primary);
-    border-left: 1px solid var(--border-color);
-    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.15);
+    border-left: 1px solid var(--border-glass);
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.1);
   }
 
+  /* ── SIDEBAR HEADER ── */
   .sidebar-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-glass);
     color: var(--text-primary);
     font-weight: 600;
+    font-size: 0.9rem;
   }
 
+  /* ── SIDEBAR CONTENT ── */
   .sidebar-content {
     flex: 1;
     overflow-y: auto;
+    padding-bottom: 1.5rem;
   }
 </style>
 
@@ -303,15 +313,14 @@ import { sekolah } from "../data/sekolah";
   const header = document.getElementById("main-header");
 
   function checkCollision() {
-    // Paksa nav visible sementara untuk ukur lebar aslinya
     nav.style.display = "flex";
     openBtn.style.display = "none";
 
     const headerWidth = header.offsetWidth;
     const logoWidth = logo.offsetWidth;
     const navWidth = nav.scrollWidth;
-    const padding = 48; // px-6 kiri + kanan
-    const gap = 24; // jarak aman
+    const padding = 48;
+    const gap = 24;
 
     const available = headerWidth - logoWidth - padding - gap;
 

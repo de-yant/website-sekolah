@@ -1,5 +1,4 @@
 <nav class="sidebar-nav">
-
   <a href="/" class="s-link">Beranda</a>
 
   <!-- PROFIL -->
@@ -34,10 +33,10 @@
       Kesiswaan <span class="s-chevron">▾</span>
     </button>
     <div class="s-group-items">
-      <a href="/osis" class="s-item">OSIS</a>
-      <a href="/ekskul" class="s-item">Ekskul</a>
-      <a href="/tata-tertib" class="s-item">Tata Tertib</a>
-      <a href="/prestasi" class="s-item">Prestasi</a>
+      <a href="/kesiswaan/osis" class="s-item">OSIS</a>
+      <a href="/kesiswaan/ekskul" class="s-item">Ekskul</a>
+      <a href="/kesiswaan/tata-tertib" class="s-item">Tata Tertib</a>
+      <a href="/kesiswaan/prestasi" class="s-item">Prestasi</a>
     </div>
   </div>
 
@@ -50,30 +49,31 @@
       Informasi <span class="s-chevron">▾</span>
     </button>
     <div class="s-group-items">
-      <a href="/berita" class="s-item">Berita</a>
-      <a href="/pengumuman" class="s-item">Pengumuman</a>
-      <a href="/artikel" class="s-item">Artikel</a>
+      <a href="/informasi/berita" class="s-item">Berita</a>
+      <a href="/informasi/pengumuman" class="s-item">Pengumuman</a>
+      <a href="/informasi/artikel" class="s-item">Artikel</a>
+      <a href="/informasi/agenda" class="s-item">Agenda</a>
+      <a href="/informasi/galeri" class="s-item">Galeri</a>
+      <a href="/informasi/kontak" class="s-item">Kontak</a>
     </div>
   </div>
 
   <a href="/unduhan" class="s-link">Unduhan</a>
 
-  <!-- SPMB — mencolok -->
   <a href="/spmb" class="s-link s-spmb">SPMB</a>
-
 </nav>
 
 <style>
   .sidebar-nav {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.2rem;
   }
 
-  /* Link langsung (tanpa submenu) */
+  /* ── Link langsung ── */
   .s-link {
     display: block;
-    padding: 0.6rem 0.75rem;
+    padding: 0.65rem 0.875rem;
     border-radius: 0.6rem;
     font-size: 0.875rem;
     font-weight: 500;
@@ -82,27 +82,29 @@
     transition: background 0.2s, color 0.2s;
   }
   .s-link:hover {
-    background: var(--bg-surface);
+    background: rgba(14, 165, 233, 0.08);
     color: var(--accent);
   }
 
-  /* SPMB mencolok */
+  /* ── SPMB ── */
   .s-spmb {
     color: var(--accent);
     font-weight: 700;
-    border: 1px solid var(--accent);
+    border: 1.5px solid var(--accent);
     text-align: center;
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
+    padding: 0.7rem 0.875rem;
   }
   .s-spmb:hover {
     background: var(--accent);
     color: #fff;
   }
 
-  /* Group dengan submenu */
+  /* ── Group dengan submenu ── */
   .s-group {
     display: flex;
     flex-direction: column;
+    margin-bottom: 0.15rem;
   }
 
   .s-group-btn {
@@ -110,7 +112,7 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 0.6rem 0.75rem;
+    padding: 0.65rem 0.875rem;
     border-radius: 0.6rem;
     font-size: 0.875rem;
     font-weight: 500;
@@ -123,28 +125,31 @@
     transition: background 0.2s, color 0.2s;
   }
   .s-group-btn:hover {
-    background: var(--bg-surface);
+    background: rgba(14, 165, 233, 0.08);
     color: var(--accent);
   }
   .s-group-btn.open {
     color: var(--accent);
+    background: rgba(14, 165, 233, 0.06);
   }
 
   .s-chevron {
-    font-size: 0.7rem;
-    transition: transform 0.2s;
+    font-size: 0.65rem;
+    transition: transform 0.25s;
     flex-shrink: 0;
+    opacity: 0.6;
   }
   .s-group-btn.open .s-chevron {
     transform: rotate(180deg);
+    opacity: 1;
   }
 
-  /* Submenu items */
+  /* ── Submenu items ── */
   .s-group-items {
     display: none;
     flex-direction: column;
-    gap: 0.1rem;
-    padding-left: 0.75rem;
+    gap: 0.25rem;
+    padding: 0.25rem 0 0.25rem 0.875rem;
     margin-top: 0.1rem;
   }
   .s-group-items.open {
@@ -162,7 +167,7 @@
     transition: background 0.2s, color 0.2s, border-color 0.2s;
   }
   .s-item:hover {
-    background: var(--bg-surface);
+    background: rgba(14, 165, 233, 0.08);
     color: var(--accent);
     border-color: var(--accent);
   }
@@ -173,13 +178,11 @@
     const items = btn.nextElementSibling;
     const isOpen = items.classList.contains("open");
 
-    // Tutup semua group lain
     document.querySelectorAll(".s-group-items.open").forEach((el) => {
       el.classList.remove("open");
       el.previousElementSibling.classList.remove("open");
     });
 
-    // Buka yang diklik (kalau belum open)
     if (!isOpen) {
       items.classList.add("open");
       btn.classList.add("open");
