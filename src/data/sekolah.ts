@@ -9,7 +9,7 @@ export const sekolah = {
   email: "officialsmk2lppmri@gmail.com",
 
   kepalaSekolah: "RA. Rosmalinda Aryaningrat Putri Mdl., S.Kom, M.Pd",
-  logo: "/images/logo.png",
+  logo: "images/logo.png",
 
   sosialMedia: {
     instagram: "",

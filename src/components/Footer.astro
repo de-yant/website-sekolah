@@ -17,8 +17,10 @@ const cleanWaNumber = sekolah.Hp ? sekolah.Hp.replace(/\s+/g, "") : "";
           class="p-2.5 bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/40 rounded-2xl flex-shrink-0 shadow-lg mb-3"
         >
           <img
-            src={sekolah.logo}
-            alt={`Logo ${sekolah.nama}`}
+            <img
+  src={import.meta.env.BASE_URL + sekolah.logo}
+  alt={sekolah.nama}
+/>
             class="w-18 h-18 object-contain"
           />
         </div>

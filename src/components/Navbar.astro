@@ -10,7 +10,7 @@ import { sekolah } from "../data/sekolah";
 
     <!-- LOGO -->
     <a href="/" class="flex items-center gap-3 text-white font-bold">
-      <img src={sekolah.logo} class="w-8 h-8" />
+      <img src={import.meta.env.BASE_URL + sekolah.logo} class="w-8 h-8" />
       {sekolah.nama}
     </a>
 
