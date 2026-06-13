@@ -5,208 +5,106 @@ import { MapPin, Phone, Mail } from "@lucide/astro";
 const cleanWaNumber = sekolah.Hp ? sekolah.Hp.replace(/\s+/g, "") : "";
 ---
 
-<footer class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
+<footer class="site-footer">
   <div class="max-w-7xl mx-auto px-6 pt-8 pb-4">
     <div class="grid gap-5 md:grid-cols-4 items-stretch">
+
       <!-- LOGO -->
-      <div
-        class="bg-slate-100 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-4 backdrop-blur-sm shadow-sm flex flex-col items-center text-center justify-start transition-all duration-300 hover:border-slate-400 dark:hover:border-slate-700/50"
-      >
-        <div
-          class="p-2.5 bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/40 rounded-2xl flex-shrink-0 shadow-lg mb-3"
-        >
+      <div class="footer-card flex flex-col items-center text-center justify-start">
+        <div class="logo-wrap mb-3">
           <img
             src={import.meta.env.BASE_URL + sekolah.logo}
             alt={sekolah.nama}
             class="w-18 h-18 object-contain"
           />
         </div>
-
-        <div class="flex flex-col items-center">
-          <h3
-            class="text-sm font-bold leading-tight tracking-wide text-slate-900 dark:text-slate-100"
-          >
-            {sekolah.nama}
-          </h3>
-          <p
-            class="mt-1.5 text-slate-500 dark:text-slate-400 text-xs leading-relaxed max-w-[180px]"
-          >
-            {sekolah.slogan}
-          </p>
-        </div>
+        <h3 class="text-sm font-bold leading-tight tracking-wide" style="color: var(--text-primary)">
+          {sekolah.nama}
+        </h3>
+        <p class="mt-1.5 text-xs leading-relaxed max-w-[180px]" style="color: var(--text-muted)">
+          {sekolah.slogan}
+        </p>
       </div>
 
       <!-- KONTAK -->
-      <div
-        class="bg-slate-100 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-4 backdrop-blur-sm shadow-sm hover:border-slate-400 dark:hover:border-slate-700/50 transition-all duration-300"
-      >
-        <h4
-          class="font-semibold text-xs tracking-wider uppercase text-sky-500 dark:text-sky-400 mb-3"
-        >
-          Kontak
-        </h4>
-
-        <ul class="space-y-2.5 text-slate-700 dark:text-slate-300 text-xs">
+      <div class="footer-card">
+        <h4 class="footer-section-title">Kontak</h4>
+        <ul class="space-y-2.5 text-xs" style="color: var(--text-secondary)">
           <li>
-            <a
-              href={`tel:${sekolah.telepon}`}
-              class="flex items-center gap-2 hover:text-sky-500 dark:hover:text-sky-400 transition-colors group"
-            >
-              <Phone
-                class="text-sky-500 dark:text-sky-400 w-3.5 h-3.5 flex-shrink-0 group-hover:scale-110 transition-transform"
-              />
+            <a href={`tel:${sekolah.telepon}`} class="contact-link">
+              <Phone class="contact-icon w-3.5 h-3.5 flex-shrink-0" />
               <span class="font-mono">Telp: {sekolah.telepon}</span>
             </a>
           </li>
 
-          {
-            sekolah.Hp && (
-              <li>
-                <a
-                  href={`https://wa.me/${cleanWaNumber}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="flex items-center gap-2 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors group"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="text-sky-500 dark:text-sky-400 w-3.5 h-3.5 flex-shrink-0 group-hover:scale-110 transition-all"
-                  >
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                  </svg>
-
-                  <span class="font-mono">Whatsapp: {sekolah.Hp}</span>
-                </a>
-              </li>
-            )
-          }
+          {sekolah.Hp && (
+            <li>
+              <a href={`https://wa.me/${cleanWaNumber}`} target="_blank" rel="noopener noreferrer" class="contact-link contact-link--wa">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon w-3.5 h-3.5 flex-shrink-0">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                </svg>
+                <span class="font-mono">Whatsapp: {sekolah.Hp}</span>
+              </a>
+            </li>
+          )}
 
           <li>
-            <a
-              href={`mailto:${sekolah.email}`}
-              class="flex items-center gap-2 hover:text-sky-500 dark:hover:text-sky-400 transition-colors group"
-            >
-              <Mail
-                class="text-sky-500 dark:text-sky-400 w-3.5 h-3.5 flex-shrink-0 group-hover:scale-110 transition-transform"
-              />
+            <a href={`mailto:${sekolah.email}`} class="contact-link">
+              <Mail class="contact-icon w-3.5 h-3.5 flex-shrink-0" />
               <span class="truncate">Email: {sekolah.email}</span>
             </a>
           </li>
 
           <li>
-            <a
-              href={sekolah.lokasi.mapsLink}
-              class="flex items-start gap-2 hover:text-sky-500 dark:hover:text-sky-400 transition-colors group"
-            >
-              <MapPin
-                class="text-sky-500 dark:text-sky-400 w-3.5 h-3.5 flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
-              />
-              <span
-                class="leading-relaxed text-slate-600 dark:text-slate-300 text-xs transition-colors group-hover:text-sky-400"
-              >
-                {sekolah.alamat}
-              </span>
+            <a href={sekolah.lokasi.mapsLink} class="contact-link items-start">
+              <MapPin class="contact-icon w-3.5 h-3.5 flex-shrink-0 mt-0.5" />
+              <span class="leading-relaxed text-xs">{sekolah.alamat}</span>
             </a>
           </li>
         </ul>
       </div>
 
-      <!-- SOSIAL MEDIA (NO CHANGE STRUCTURE, ONLY COLORS) -->
-      <div
-        class="bg-slate-100 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-4"
-      >
-        <h4
-          class="text-xs uppercase font-bold mb-3 text-sky-500 dark:text-sky-400"
-        >
-          Media Sosial
-        </h4>
-
-        <ul class="space-y-3 text-xs text-slate-700 dark:text-slate-300">
+      <!-- SOSIAL MEDIA -->
+      <div class="footer-card">
+        <h4 class="footer-section-title">Media Sosial</h4>
+        <ul class="space-y-3 text-xs" style="color: var(--text-secondary)">
           <li>
-            <a
-              href={sekolah.sosialMedia.instagram || "#"}
-              class="flex items-center gap-2 hover:text-pink-500"
-            >
-              <svg
-                class="w-4 h-4 fill-current text-slate-500 dark:text-slate-400 group-hover:text-pink-500"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7z"
-                ></path>
+            <a href={sekolah.sosialMedia.instagram || "#"} class="social-link social-link--ig">
+              <svg class="w-4 h-4 fill-current social-icon" viewBox="0 0 24 24">
+                <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7z"/>
               </svg>
               Instagram
             </a>
           </li>
-
           <li>
-            <a
-              href={sekolah.sosialMedia.youtube || "#"}
-              class="flex items-center gap-2 hover:text-red-500"
-            >
-              <svg
-                class="w-4 h-4 fill-current text-slate-500 dark:text-slate-400"
-                viewBox="0 0 24 24"
-              >
-                <path d="M10 15l5-3-5-3v6z"></path>
+            <a href={sekolah.sosialMedia.youtube || "#"} class="social-link social-link--yt">
+              <svg class="w-4 h-4 fill-current social-icon" viewBox="0 0 24 24">
+                <path d="M10 15l5-3-5-3v6z"/>
               </svg>
               YouTube
             </a>
           </li>
-
           <li>
-            <a
-              href={sekolah.sosialMedia.facebook || "#"}
-              class="flex items-center gap-2 hover:text-blue-500"
-            >
-              <svg
-                class="w-4 h-4 fill-current text-slate-500 dark:text-slate-400"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M22 12a10 10 0 1 0-11.5 9.95v-7.05H8v-2.9h2.5V9.3c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6v1.9H17l-.4 2.9h-2.3v7.05A10 10 0 0 0 22 12z"
-                ></path>
+            <a href={sekolah.sosialMedia.facebook || "#"} class="social-link social-link--fb">
+              <svg class="w-4 h-4 fill-current social-icon" viewBox="0 0 24 24">
+                <path d="M22 12a10 10 0 1 0-11.5 9.95v-7.05H8v-2.9h2.5V9.3c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6v1.9H17l-.4 2.9h-2.3v7.05A10 10 0 0 0 22 12z"/>
               </svg>
               Facebook
             </a>
           </li>
-
           <li>
-            <a
-              href={sekolah.sosialMedia.tiktok || "#"}
-              class="flex items-center gap-2 hover:text-white"
-            >
-              <svg
-                class="w-4 h-4 fill-current text-slate-500 dark:text-slate-400"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M16 2c.6 2.4 2.2 4 4.6 4v3c-1.6 0-3-.5-4.6-1.5V15c0 3.3-2.7 6-6 6S4 18.3 4 15s2.7-6 6-6c.4 0 .8 0 1.2.1v3.2c-.4-.2-.8-.3-1.2-.3-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3V2h3z"
-                ></path>
+            <a href={sekolah.sosialMedia.tiktok || "#"} class="social-link social-link--tt">
+              <svg class="w-4 h-4 fill-current social-icon" viewBox="0 0 24 24">
+                <path d="M16 2c.6 2.4 2.2 4 4.6 4v3c-1.6 0-3-.5-4.6-1.5V15c0 3.3-2.7 6-6 6S4 18.3 4 15s2.7-6 6-6c.4 0 .8 0 1.2.1v3.2c-.4-.2-.8-.3-1.2-.3-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3V2h3z"/>
               </svg>
               TikTok
             </a>
           </li>
-
           <li>
-            <a
-              href={sekolah.sosialMedia.threads || "#"}
-              class="flex items-center gap-2 hover:text-sky-500"
-            >
-              <svg
-                class="w-4 h-4 fill-current text-slate-500 dark:text-slate-400"
-                viewBox="0 0 24 24"
-              >
-                <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"></path>
-                <path d="M12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"></path>
+            <a href={sekolah.sosialMedia.threads || "#"} class="social-link social-link--th">
+              <svg class="w-4 h-4 fill-current social-icon" viewBox="0 0 24 24">
+                <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/>
+                <path d="M12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/>
               </svg>
               Threads
             </a>
@@ -214,38 +112,26 @@ const cleanWaNumber = sekolah.Hp ? sekolah.Hp.replace(/\s+/g, "") : "";
         </ul>
       </div>
 
-      <!-- MAP (NO CHANGE) -->
-      <div
-        class="bg-slate-100 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-3"
-      >
-        <h4
-          class="text-xs uppercase font-bold mb-2 text-sky-500 dark:text-sky-400"
-        >
-          Lokasi Kami
-        </h4>
-
+      <!-- MAP -->
+      <div class="footer-card">
+        <h4 class="footer-section-title">Lokasi Kami</h4>
         <div class="h-36 rounded-xl overflow-hidden">
           <iframe
             src={sekolah.lokasi.embedUrl}
             class="w-full h-full border-0"
-            loading="lazy"></iframe>
+            loading="lazy"
+          ></iframe>
         </div>
       </div>
     </div>
 
     <!-- COPYRIGHT -->
-    <div class="mt-6 border-t border-slate-200 dark:border-slate-800 pt-4">
-      <div
-        class="flex justify-between text-xs text-slate-500 dark:text-slate-400"
-      >
+    <div class="mt-6 pt-4" style="border-top: 1px solid var(--border-color)">
+      <div class="flex justify-between text-xs" style="color: var(--text-muted)">
         <p>&copy; {new Date().getFullYear()} {sekolah.nama}</p>
-
         <p>
           Powered by
-          <a
-            href={sekolah.developer.website}
-            class="text-sky-500 dark:text-sky-400"
-          >
+          <a href={sekolah.developer.website} style="color: var(--accent)">
             {sekolah.developer.nama}
           </a>
         </p>
@@ -253,3 +139,81 @@ const cleanWaNumber = sekolah.Hp ? sekolah.Hp.replace(/\s+/g, "") : "";
     </div>
   </div>
 </footer>
+
+<style>
+  .site-footer {
+    background: var(--footer-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-top: 1px solid var(--border-glass);
+    color: var(--text-primary);
+    transition: background 0.3s;
+  }
+
+  .footer-card {
+    background: var(--bg-glass);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-glass);
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: var(--glass-shadow);
+    transition: border-color 0.2s, background 0.3s;
+  }
+  .footer-card:hover {
+    border-color: var(--border-color);
+  }
+
+  .logo-wrap {
+    padding: 0.625rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    box-shadow: var(--glass-shadow);
+  }
+
+  .footer-section-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact-link:hover { color: var(--accent); }
+  .contact-link--wa:hover { color: #10b981; }
+
+  .contact-icon { color: var(--accent); transition: transform 0.2s; }
+  .contact-link:hover .contact-icon { transform: scale(1.1); }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .social-icon { color: var(--text-muted); transition: color 0.2s, transform 0.2s; }
+  .social-link:hover .social-icon { transform: scale(1.1); }
+
+  .social-link--ig:hover { color: #ec4899; }
+  .social-link--ig:hover .social-icon { color: #ec4899; }
+  .social-link--yt:hover { color: #ef4444; }
+  .social-link--yt:hover .social-icon { color: #ef4444; }
+  .social-link--fb:hover { color: #3b82f6; }
+  .social-link--fb:hover .social-icon { color: #3b82f6; }
+  .social-link--tt:hover { color: var(--text-primary); }
+  .social-link--tt:hover .social-icon { color: var(--text-primary); }
+  .social-link--th:hover { color: var(--accent); }
+  .social-link--th:hover .social-icon { color: var(--accent); }
+</style>

@@ -1,1 +1,45 @@
 @import "tailwindcss";
+
+@theme {
+  --breakpoint-md: 768px;
+}
+/* ── Theme variables ── */
+:root {
+  --bg-primary: #ffffff;
+  --bg-surface: rgba(248, 250, 252, 0.8);
+  --bg-glass: rgba(255, 255, 255, 0.7);
+  --border-color: rgba(15, 23, 42, 0.12);
+  --border-glass: rgba(15, 23, 42, 0.08);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --accent: #0ea5e9;
+  --accent-hover: #0284c7;
+  --glass-blur: blur(12px);
+  --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --nav-bg: rgba(255, 255, 255, 0.75);
+  --footer-bg: rgba(248, 250, 252, 0.85);
+}
+
+.dark {
+  --bg-primary: #0f172a;
+  --bg-surface: rgba(30, 41, 59, 0.8);
+  --bg-glass: rgba(15, 23, 42, 0.7);
+  --border-color: rgba(255, 255, 255, 0.10);
+  --border-glass: rgba(255, 255, 255, 0.06);
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #475569;
+  --accent: #38bdf8;
+  --accent-hover: #7dd3fc;
+  --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  --nav-bg: rgba(15, 23, 42, 0.8);
+  --footer-bg: rgba(15, 23, 42, 0.85);
+}
+
+/* ── Base ── */
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background 0.3s, color 0.3s;
+}
